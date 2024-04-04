@@ -78,7 +78,7 @@
                     </div>
                 </div>
             @empty
-                <p class="p-3 text-center text-sm text-gray-900">
+                <p class="p-3 text-center text-sm text-gray-200">
                     No existen expedientes en este momento.
                 </p>
             @endforelse
