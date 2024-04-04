@@ -21,15 +21,15 @@
         {{-- <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="/img/xcion 1080x1980_PNG.png" /> --}}
         <div class="absolute grid grid-cols-1 content-center h-screen w-full">
             <div class="flex items-center justify-center">
-                <img id="background" src="/img/xcion 1080x1980_PNG.png" alt="logo de la app" />
+                <img id="background" src="/img/bg_food.jpg" alt="logo de la app" />
             </div>
         </div>
         <div class="relative flex flex-col items-center justify-between min-h-screen selection:text-white">
             <header class="grid items-center justify-between w-full grid-cols-2 gap-2 p-5 py-8 lg:grid-cols-3 bg-lime-500">
                 <div class="flex text-gray-700 font-bold lg:justify-center lg:col-start-2">
                     <a href="/" class="flex items-center flex-col md:flex-row">
-                        <img src="/img/xcion 300X300_PNG.png" alt="" width="50px">
-                        <p class="bold md:text-2xl">{{ $_ENV['APP_NAME']}}</p>
+                        <img src="/img/logo.png" alt="{{ $_ENV['APP_NAME']}}" width="180px">
+                        {{-- <p class="bold md:text-2xl"></p> --}}
                     </a>
                 </div>
                 @if (Route::has('login'))

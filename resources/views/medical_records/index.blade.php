@@ -6,7 +6,7 @@
         {{-- <x-nav-link :href="route('nuevo-expediente')" :active="request()->routeIs('nuevo-expediente')" wire:navigate class="mt-3 border-lime-700">
             {{ __('Nuevo Expediente') }}
         </x-nav-link> --}}
-        <a href="{{route('nuevo-expediente')}}" class="border border-lime-500 rounded p-2 flex w-1/6 my-2 justify-center items-center text-gray-100 text-sm uppercase font-bold hover:bg-lime-700  transition ease-in-out duration-150">
+        <a href="{{route('nuevo-expediente')}}" class="border border-lime-500 rounded p-2 flex md:w-1/6 my-2 justify-center items-center text-gray-100 text-sm uppercase font-bold hover:bg-lime-700  transition ease-in-out duration-150">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                 class="w-6 h-6 mx-1">
                 <path stroke-linecap="round" stroke-linejoin="round"
