@@ -3,47 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\MedicalRecord;
+use App\Models\State;
 use Carbon\Carbon;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CreateMedicalRecord extends Component
 {
-    public $mexican_states = [
-        1 => 'Ciudad de México',
-        2 => 'Aguascalientes',
-        3 => 'Baja California',
-        4 => 'Baja California Sur',
-        5 => 'Campeche',
-        6 => 'Chiapas',
-        7 => 'Chihuahua',
-        8 => 'Coahuila de Zaragoza',
-        9 => 'Colima',
-        10 => 'Durango',
-        11 => 'Guanajuato',
-        12 => 'Guerrero',
-        13 => 'Hidalgo',
-        14 => 'Jalisco',
-        15 => 'Estado de México',
-        16 => 'Michoacán de Ocampo',
-        17 => 'Morelos',
-        18 => 'Nayarit',
-        19 => 'Nuevo León',
-        20 => 'Oaxaca',
-        21 => 'Puebla',
-        22 => 'Querétaro de Arteaga',
-        23 => 'Quintana Roo',
-        24 => 'San Luis Potosí',
-        25 => 'Sinaloa',
-        26 => 'Sonora',
-        27 => 'Tabasco',
-        28 => 'Tamaulipas',
-        29 => 'Tlaxcala',
-        30 => 'Veracruz',
-        31 => 'Yucatán',
-        32 => 'Zacatecas',
-    ];
-
     public $periodic_habits = [
         1 => 'Nunca',
         2 => 'Socialmente',
@@ -81,7 +47,7 @@ class CreateMedicalRecord extends Component
     public $city;
 
     #[Validate('required', message: 'El campo estado es requerido')]
-    public $state;
+    public $state_id;
 
     #[Validate('required', message: 'El campo peso es requerido')]
     public $weight = '';
@@ -134,9 +100,13 @@ class CreateMedicalRecord extends Component
         return redirect()->route('expedientes');
     }
 
+    // Render view
     public function render()
     {
-        return view('livewire.create-medical-record');
+
+        $states = State::all();
+
+        return view('livewire.create-medical-record', ['states' => $states]);
     }
 
     public function changeAgeEvent($value)

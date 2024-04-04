@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->integer('gender');
             $table->string('city');
-            $table->integer('state');
+            //$table->integer('state');
             $table->integer('weight');
             $table->float('size');
             $table->integer('glucose');
@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('smoking');
             $table->integer('alcoholism');
             $table->integer('drugs');
+            $table->foreignId('state_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

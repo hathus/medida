@@ -14,6 +14,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::view('expedientes', 'medical_records.index')->name('expedientes');
     Route::view('nuevo-expediente', 'medical_records.create')->name('nuevo-expediente');
     Route::get('/medical_records/{medical_record}/edit', [MedicalRecordController::class, 'edit'])->name('editar-expediente');
+    Route::get('/medical_records/{medical_record}/show', [MedicalRecordController::class, 'show'])->name('mostrar-expediente');
 });
 
 Route::view('profile', 'profile')

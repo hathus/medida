@@ -19,7 +19,7 @@ class MedicalRecord extends Model
         'gender',
         'age',
         'city',
-        'state',
+        'state_id',
         'weight',
         'size',
         'glucose',

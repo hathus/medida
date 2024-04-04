@@ -4,7 +4,7 @@
             @forelse ($expedientes as $expediente)    
                 <div class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
-                        <a href="#" class="font-bold">
+                        <a href="{{route('mostrar-expediente', $expediente->id)}}" class="font-bold">
                             {{ $expediente->name }}
                         </a>
                         <p>
@@ -50,7 +50,16 @@
                     </div>
 
                     <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
-                        <a href="#" class="py-2 px-4 rounded border border-green-700 text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center">
+                        <a href="#"
+                            class="py-2 px-4 rounded border border-amber-700 text-gray-100 hover:bg-amber-700  text-xs font-bold uppercase flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                            </svg>
+                            Citas Medicas
+                        </a>
+                        <a href="{{route('mostrar-expediente', $expediente->id)}}" class="py-2 px-4 rounded border border-green-700 text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                 class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
