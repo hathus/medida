@@ -9,7 +9,7 @@ Route::view('/', 'welcome')->name('welcome');
 //     ->middleware(['auth', 'verified'])
 //     ->name('dashboard');
 
-Route::middleware('auth', 'verified')->group(function() {
+Route::middleware('auth', 'verified')->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::view('expedientes', 'medical_records.index')->name('expedientes');
     Route::view('nuevo-expediente', 'medical_records.create')->name('nuevo-expediente');
@@ -20,4 +20,4 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
