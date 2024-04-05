@@ -16,19 +16,6 @@
 
         {{-- Livewire --}}
         @livewireStyles
-        <style type="text/css" media="print">
-            @page {
-                size: auto;
-                /* auto is the initial value */
-                margin: 0;
-                /* this affects the margin in the printer settings */
-            }
-
-            body {
-                padding-top: 22px;
-                padding-bottom: 22px ;
-            }
-        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900 z-10">
