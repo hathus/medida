@@ -16,7 +16,7 @@ new class extends Component {
 }; ?>
 
 <nav x-data="{ open: false }"
-    class="bg-white dark:bg-lime-800 border-b border-lime-100 dark:border-lime-700 sticky top-0 z-10">
+    class="bg-white dark:bg-lime-800 border-b border border-lime-700 dark:border-lime-700 sticky top-0 z-10 print:border-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -30,7 +30,7 @@ new class extends Component {
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex print:hidden">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('nav-dashboard.dashboard') }}
                     </x-nav-link>
@@ -41,7 +41,7 @@ new class extends Component {
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex sm:items-center sm:ms-6 print:hidden">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
