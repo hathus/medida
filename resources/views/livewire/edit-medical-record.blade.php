@@ -90,15 +90,15 @@
 
             <div class="md:flex-col md:w-1/2">
                 {{-- estado --}}
-                <x-input-label class="uppercase" for="state" :value="__('Estado')" />
-                <select id="state" wire:model="state" wire:model.live="state"
+                <x-input-label class="uppercase" for="state_id" :value="__('Estado')" />
+                <select id="state_id" wire:model="state_id" wire:model.live="state_id"
                     class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
                     <option value="">-- Seleccione un Estado --</option>
-                    @foreach ($mexican_states as $key => $state)
-                    <option value="{{ $key }}">{{ $state }}</option>
+                    @foreach ($states as $state)
+                    <option value="{{ $state->id }}">{{ $state->name }}</option>
                     @endforeach
                 </select>
-                @error('state')
+                @error('state_id')
                 <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\MedicalRecord;
+use App\Models\State;
 use Carbon\Carbon;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -10,41 +11,6 @@ use Livewire\Attributes\Validate;
 
 class EditMedicalRecord extends Component
 {
-    public $mexican_states = [
-        1 => 'Ciudad de México',
-        2 => 'Aguascalientes',
-        3 => 'Baja California',
-        4 => 'Baja California Sur',
-        5 => 'Campeche',
-        6 => 'Chiapas',
-        7 => 'Chihuahua',
-        8 => 'Coahuila de Zaragoza',
-        9 => 'Colima',
-        10 => 'Durango',
-        11 => 'Guanajuato',
-        12 => 'Guerrero',
-        13 => 'Hidalgo',
-        14 => 'Jalisco',
-        15 => 'Estado de México',
-        16 => 'Michoacán de Ocampo',
-        17 => 'Morelos',
-        18 => 'Nayarit',
-        19 => 'Nuevo León',
-        20 => 'Oaxaca',
-        21 => 'Puebla',
-        22 => 'Querétaro de Arteaga',
-        23 => 'Quintana Roo',
-        24 => 'San Luis Potosí',
-        25 => 'Sinaloa',
-        26 => 'Sonora',
-        27 => 'Tabasco',
-        28 => 'Tamaulipas',
-        29 => 'Tlaxcala',
-        30 => 'Veracruz',
-        31 => 'Yucatán',
-        32 => 'Zacatecas',
-    ];
-
     public $periodic_habits = [
         1 => 'Nunca',
         2 => 'Socialmente',
@@ -85,7 +51,7 @@ class EditMedicalRecord extends Component
     public $city;
 
     #[Validate('required', message: 'El campo estado es requerido')]
-    public $state;
+    public $state_id;
 
     #[Validate('required', message: 'El campo peso es requerido')]
     public $weight = '';
@@ -134,7 +100,7 @@ class EditMedicalRecord extends Component
         $this->age = Carbon::parse($medicalRecord->age)->format('Y-m-d');
         $this->changeAgeEvent($this->age);
         $this->city = $medicalRecord->city;
-        $this->state = $medicalRecord->state;
+        $this->state_id = $medicalRecord->state_id;
         $this->weight = $medicalRecord->weight;
         $this->size = $medicalRecord->size;
         $this->changeSizeEvent($this->size);
@@ -149,7 +115,11 @@ class EditMedicalRecord extends Component
 
     public function render()
     {
-        return view('livewire.edit-medical-record');
+        $states = State::all();
+
+        return view('livewire.edit-medical-record', [
+            'states' => $states,
+        ]);
     }
 
     public function editMedicalRecord()
@@ -164,7 +134,7 @@ class EditMedicalRecord extends Component
         $medicalRecord->gender      = $datos_validados['gender'];
         $medicalRecord->age         = $datos_validados['age'];
         $medicalRecord->city        = $datos_validados['city'];
-        $medicalRecord->state       = $datos_validados['state'];
+        $medicalRecord->state_id    = $datos_validados['state_id'];
         $medicalRecord->weight      = $datos_validados['weight'];
         $medicalRecord->size        = $datos_validados['size'];
         $medicalRecord->imc         = $datos_validados['imc'];

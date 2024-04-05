@@ -12,19 +12,23 @@
                     <h1 class="text-xl font-bold mb-5 text-center uppercase">Expediente Medico</h1>
 
                     <div class="mt-4 sm:flex  sm:space-x-2 sm:space-y-0 space-y-2">
-                        <div class="sm:w-1/2">
-                            <label for="name">Nombre</label>
-                            <input
-                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
-                                type="text" value="{{ $medicalRecord->name }}" disabled>
-                        </div>
-                        <div class="sm:w-1/2">
+                        <div class="sm:w-2/5"></div>
+                        <div class="sm:w-3/5">
                             <label for="date">Fecha de Registro</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text"
                                 value="{{ \Carbon\Carbon::parse($medicalRecord->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y h:i:s A') }}"
                                 disabled>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 sm:flex  sm:space-x-2 sm:space-y-0 space-y-2">
+                        <div class="sm:w-full">
+                            <label for="name">Nombre</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ $medicalRecord->name }}" disabled>
                         </div>
                     </div>
 
