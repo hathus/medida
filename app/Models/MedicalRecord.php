@@ -20,15 +20,6 @@ class MedicalRecord extends Model
         'age',
         'city',
         'state_id',
-        'weight',
-        'size',
-        'glucose',
-        'imc',
-        'exercised',
-        'fast_food',
-        'smoking',
-        'alcoholism',
-        'drugs',
         'user_id',
     ];
 }

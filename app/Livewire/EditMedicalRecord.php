@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\MedicalAppointment;
 use App\Models\MedicalRecord;
 use App\Models\State;
 use Carbon\Carbon;
@@ -101,16 +102,17 @@ class EditMedicalRecord extends Component
         $this->changeAgeEvent($this->age);
         $this->city = $medicalRecord->city;
         $this->state_id = $medicalRecord->state_id;
-        $this->weight = $medicalRecord->weight;
-        $this->size = $medicalRecord->size;
+        $medApp = MedicalAppointment::where('medical_record_id', $this->medicalRecord_id)->first();
+        $this->weight = $medApp->weight;
+        $this->size = $medApp->size;
         $this->changeSizeEvent($this->size);
-        $this->glucose = $medicalRecord->glucose;
+        $this->glucose = $medApp->glucose;
         $this->changeGlucoseEvent($this->glucose);
-        $this->exercised = $medicalRecord->exercised;
-        $this->fast_food = $medicalRecord->fast_food;
-        $this->smoking = $medicalRecord->smoking;
-        $this->alcoholism = $medicalRecord->alcoholism;
-        $this->drugs = $medicalRecord->drugs;
+        $this->exercised = $medApp->exercised;
+        $this->fast_food = $medApp->fast_food;
+        $this->smoking = $medApp->smoking;
+        $this->alcoholism = $medApp->alcoholism;
+        $this->drugs = $medApp->drugs;
     }
 
     public function render()
@@ -135,19 +137,23 @@ class EditMedicalRecord extends Component
         $medicalRecord->age         = $datos_validados['age'];
         $medicalRecord->city        = $datos_validados['city'];
         $medicalRecord->state_id    = $datos_validados['state_id'];
-        $medicalRecord->weight      = $datos_validados['weight'];
-        $medicalRecord->size        = $datos_validados['size'];
-        $medicalRecord->imc         = $datos_validados['imc'];
-        $medicalRecord->glucose     = $datos_validados['glucose'];
-        $medicalRecord->exercised   = $datos_validados['exercised'];
-        $medicalRecord->fast_food   = $datos_validados['fast_food'];
-        $medicalRecord->smoking     = $datos_validados['smoking'];
-        $medicalRecord->alcoholism  = $datos_validados['alcoholism'];
-        $medicalRecord->drugs       = $datos_validados['drugs'];
+
+        $medApp = MedicalAppointment::where('medical_record_id', $this->medicalRecord_id)->first();
+        $medApp->weight      = $datos_validados['weight'];
+        $medApp->size        = $datos_validados['size'];
+        $medApp->imc         = $datos_validados['imc'];
+        $medApp->glucose     = $datos_validados['glucose'];
+        $medApp->exercised   = $datos_validados['exercised'];
+        $medApp->fast_food   = $datos_validados['fast_food'];
+        $medApp->smoking     = $datos_validados['smoking'];
+        $medApp->alcoholism  = $datos_validados['alcoholism'];
+        $medApp->drugs       = $datos_validados['drugs'];
 
         $this->authorize('update', $medicalRecord);
+        //$this->authorize('update', $medApp);
 
         $medicalRecord->save();
+        $medApp->save();
 
         session()->flash('message', 'El expediente se actualizó correctamente!');
 

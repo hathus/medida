@@ -20,10 +20,9 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/medical_records/{medical_record}/show', [MedicalRecordController::class, 'show'])->name('mostrar-expediente');
 
     // Citas Medicas
-    //Route::view('citas-medicas', 'medical_appointments.index')->name('consultas');
     Route::get('medical_appointments/{medical_record}/index', [MedicalAppointmentController::class, 'index'])->name('consultas');
-    Route::view('nueva-consulta', 'medical_appointments.create')->name('nueva-consulta');
-    
+    Route::get('medical_appointments/{medical_record}/create', [MedicalAppointmentController::class, 'create'])->name('nueva-consulta');
+    Route::get('/medical_appointments/{medical_appointment}/edit', [MedicalAppointmentController::class, 'edit'])->name('editar-consulta');
     Route::get('/medical_appointments/{medical_record}/show', [MedicalAppointmentController::class, 'show'])->name('mostrar-consultas');
 });
 

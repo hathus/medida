@@ -2,8 +2,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Consultas Medicas') }}
+            de {{$name}}
         </h2>
-        <a href="nueva-consulta"
+        <a href="{{route('nueva-consulta', $id)}}"
             class="border border-lime-500 rounded p-2 flex md:w-1/6 my-2 justify-center items-center text-gray-100 text-sm uppercase font-bold hover:bg-lime-700  transition ease-in-out duration-150">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6 mx-1">

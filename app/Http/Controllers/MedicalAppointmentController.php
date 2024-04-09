@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MedicalAppointment;
+use App\Models\MedicalRecord;
 use Illuminate\Http\Request;
 
 class MedicalAppointmentController extends Controller
@@ -22,8 +23,21 @@ class MedicalAppointmentController extends Controller
 
     public function index($id)
     {
+        $medical_record = MedicalRecord::findOrFail($id);
+
         return view('medical_appointments.index', [
             'id' => $id,
+            'name' => $medical_record->name,
+        ]);
+    }
+
+    public function create($id)
+    {
+        $medical_record = MedicalRecord::findOrFail($id);
+
+        return view('medical_appointments.create', [
+            'id' => $id,
+            'name' => $medical_record->name,
         ]);
     }
 
@@ -42,6 +56,11 @@ class MedicalAppointmentController extends Controller
      */
     public function edit(MedicalAppointment $medicalAppointment)
     {
+        $medicalRecord = MedicalRecord::findOrFail($medicalAppointment);
 
+        return view('medical_appointments.edit', [
+            'medicalAppointment' => $medicalAppointment,
+            'medicalRecord' => $medicalRecord,
+        ]);
     }
 }

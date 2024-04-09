@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MedicalAppointment;
 use Carbon\Carbon;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -61,16 +62,23 @@ class MedicalRecordController extends Controller
     {
 
         $state = State::find($medicalRecord->state_id);
-        $medicalRecord['gender_eval'] = $this->gender_list[$medicalRecord->gender];
         $medicalRecord['state_eval'] = $state->name;
+        $medicalRecord['gender_eval'] = $this->gender_list[$medicalRecord->gender];
         $medicalRecord['age_eval'] = $this->changeAgeEvent($medicalRecord->age);
-        $medicalRecord['exercised_eval'] = $this->periodic_habits[$medicalRecord->exercised];
-        $medicalRecord['fast_food_eval'] = $this->periodic_habits[$medicalRecord->fast_food];
-        $medicalRecord['smoking_eval'] = $this->periodic_habits[$medicalRecord->smoking];
-        $medicalRecord['alcoholism_eval'] = $this->periodic_habits[$medicalRecord->alcoholism];
-        $medicalRecord['drugs_eval'] = $this->periodic_habits[$medicalRecord->drugs];
-        $medicalRecord['imc_eval'] = $this->evalIMC($medicalRecord->imc);
-        $medicalRecord['glucose_eval'] = $medicalRecord->glucose <= 120 ? 'Glucosa Controlada' : 'Glucosa Descontrolada';
+        
+        $id = $medicalRecord->id;
+        $medApp = MedicalAppointment::where('medical_record_id', $id)->latest()->first();
+        $medicalRecord['weight'] = $medApp->weight;
+        $medicalRecord['size'] = $medApp->size;
+        $medicalRecord['imc'] = $medApp->imc;
+        $medicalRecord['glucose'] = $medApp->glucose;
+        $medicalRecord['exercised_eval'] = $this->periodic_habits[$medApp->exercised];
+        $medicalRecord['fast_food_eval'] = $this->periodic_habits[$medApp->fast_food];
+        $medicalRecord['smoking_eval'] = $this->periodic_habits[$medApp->smoking];
+        $medicalRecord['alcoholism_eval'] = $this->periodic_habits[$medApp->alcoholism];
+        $medicalRecord['drugs_eval'] = $this->periodic_habits[$medApp->drugs];
+        $medicalRecord['imc_eval'] = $this->evalIMC($medApp->imc);
+        $medicalRecord['glucose_eval'] = $medApp->glucose <= 120 ? 'Glucosa Controlada' : 'Glucosa Descontrolada';
 
 
         return view('medical_records.show', [

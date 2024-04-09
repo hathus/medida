@@ -14,21 +14,11 @@ return new class extends Migration
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->date('age');
             $table->string('phone');
             $table->integer('gender');
             $table->string('city');
-            //$table->integer('state');
-            $table->integer('weight');
-            $table->float('size');
-            $table->integer('glucose');
-            $table->float('imc');
-            $table->integer('exercised');
-            $table->integer('fast_food');
-            $table->integer('smoking');
-            $table->integer('alcoholism');
-            $table->integer('drugs');
             $table->foreignId('state_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

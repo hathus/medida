@@ -10,11 +10,6 @@ class MedicalAppointment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'body_temp',
-        'allergies',
-        'diagnostic',
-        'treatment',
-        'medical_record_id',
         'weight',
         'size',
         'glucose',
@@ -24,5 +19,11 @@ class MedicalAppointment extends Model
         'smoking',
         'alcoholism',
         'drugs',
+        'body_temp',
+        'blood_pressure',
+        'allergies',
+        'diagnostic',
+        'treatment',
+        'medical_record_id',
     ];
 }

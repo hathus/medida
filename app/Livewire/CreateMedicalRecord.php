@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\MedicalAppointment;
 use App\Models\MedicalRecord;
 use App\Models\State;
 use Carbon\Carbon;
@@ -89,13 +90,25 @@ class CreateMedicalRecord extends Component
 
     public function createMedicalRecord()
     {
-        $datos_validados = $this->validate();
-        $datos_validados['imc'] = $this->imc;
-        $datos_validados['user_id'] = auth()->user()->id;
+        // Validamos los datos del formulario
+        $datosValidados = $this->validate();
+        $datosValidados['imc'] = $this->imc;
 
-        MedicalRecord::create($datos_validados);
+        // Separamos los datos que van a ser procesados por los modelos
+        // Datos que van a medical record 
+        $datosValidados['user_id']   = auth()->user()->id;
 
-        session()->flash('message', 'El expediente se creó correctamente!');
+        $doneMedicalRecord = MedicalRecord::create($datosValidados);
+
+        if($doneMedicalRecord)
+        {
+            $datosValidados['medical_record_id']     = $doneMedicalRecord->id;
+            MedicalAppointment::create($datosValidados);
+            session()->flash('message', 'El expediente se creó correctamente!');
+        } else {
+            session()->flash('message', 'El expediente no pudo crearse');
+        }
+
 
         return redirect()->route('expedientes');
     }
@@ -154,19 +167,15 @@ class CreateMedicalRecord extends Component
         if ($this->imc < 18.5) {
             $this->eval_imc_color = "";
             $this->eval_imc = 'Bajo Peso';
-            $this->eval_imc_color = "!text-blue-700";
         } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
             $this->eval_imc_color = "";
             $this->eval_imc = 'Normal';
-            $this->eval_imc_color = "!text-lime-700";
         } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
             $this->eval_imc_color = "";
             $this->eval_imc = 'Sobrepeso';
-            $this->eval_imc_color = "!text-orange-700";
         } else {
             $this->eval_imc_color = "";
             $this->eval_imc = 'Obesidad';
-            $this->eval_imc_color = "!text-red-700";
         }
     }
 }

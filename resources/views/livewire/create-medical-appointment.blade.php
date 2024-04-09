@@ -1,109 +1,4 @@
-<form class="md:w-1/2 space-y-5" wire:submit.prevent="createMedicalRecord" novalidate>
-    {{-- Nombre del paciente --}}
-    <div class="mt-4">
-        <x-input-label class="uppercase" for="name" :value="__('Nombre')" />
-        <x-text-input id="name" class="block mt-1 w-full" type="text" wire:model="name" wire:model.live="name" :value="old('name')"
-            placeholder="Nombre Completo del Paciente" />
-            @error('name')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
-    </div>
-
-    {{-- Email del paciente --}}
-    <div class="mt-4">
-        <x-input-label class="uppercase" for="email" :value="__('Correo Electrónico')" />
-        <x-text-input id="email" class="block mt-1 w-full" type="email" wire:model="email" wire:model.live="email" :value="old('email')"
-            placeholder="example@example.com" />
-            @error('email')
-            <livewire:mostrar-alerta :message="$message" />
-            @enderror
-    </div>
-
-    {{-- Teléfono  Genero --}}
-    <div class="mt-4">
-        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
-            <div class="flex-col md:w-1/2 justify-stretch mb-4">
-                {{-- teléfono --}}
-                <x-input-label class="uppercase" for="phone" :value="__('Teléfono')" />
-                <x-text-input id="phone" class="block mt-1 w-full" type="tel" placeholder="0000000000"
-                    wire:model="phone" wire:model.live="phone" :value="old('phone')" />
-                    @error('phone')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-            </div>
-
-            <div class="flex-col md:w-1/2 justify-stretch mb-4">
-                {{-- genero de nacimiento --}}
-                <x-input-label class="uppercase" for="gender" :value="__('Genero de Nacimiento')" />
-                <select id="gender" wire:model="gender" wire:model.live="gender"
-                    class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
-                    <option value="">-- Seleccione un Genero --</option>
-                    @foreach ($gender_list as $key => $gender)
-                    <option value="{{ $key }}">{{ $gender }}</option>
-                    @endforeach
-                </select>
-                @error('gender')
-                <livewire:mostrar-alerta :message="$message" />
-                @enderror
-            </div>
-        </div>
-    </div>
-
-    {{-- Edad y Edad Calculo --}}
-    <div class="mt-4">
-        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
-            <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
-                {{-- fecha de nacimiento --}}
-                <x-input-label class="uppercase" for="age" :value="__('Fecha de Nacimiento')" />
-                <x-text-input id="age" class="block mt-1 w-full" type="date" wire:model="age" wire:model.live="age" wire:change="changeAgeEvent($event.target.value)"
-                    :value="old('age')" />
-                @error('age')
-                <livewire:mostrar-alerta :message="$message" />
-                @enderror
-            </div>
-    
-            <div class="md:flex-col md:w-1/2">
-                {{-- Calcúlo de edad--}}
-                <x-input-label class="uppercase" for="age_eval" :value="__('Edad (Años)')" />
-                <x-text-input id="age_eval" class="block mt-1 w-full uppercase" type="tel" placeholder="En espera de evaluación" wire:model="age_eval"
-                    wire:model.live="age_eval" :value="old('age_eval')" disabled/>
-                @error('age_eval')
-                <livewire:mostrar-alerta :message="$message" />
-                @enderror
-            </div>
-        </div>
-    </div>
-
-    {{-- Ciudad y Estado --}}
-    <div class="mt-4">
-        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
-            <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
-                {{-- ciudad --}}
-                <x-input-label class="uppercase" for="city" :value="__('Ciudad')" />
-                <x-text-input id="city" class="block mt-1 w-full uppercase" type="text" wire:model="city" wire:model.live="city"
-                    :value="old('city')" placeholder="Ciudad o Municipio" />
-                    @error('city')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-            </div>
-
-            <div class="md:flex-col md:w-1/2">
-                {{-- estado --}}
-                <x-input-label class="uppercase" for="state_id" :value="__('Estado')" />
-                <select id="state_id" wire:model="state_id" wire:model.live="state_id"
-                    class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
-                    <option value="">-- Seleccione un Estado --</option>
-                    @foreach ($states as $state)
-                        <option value="{{ $state->id }}">{{ $state->name }}</option>
-                    @endforeach
-                </select>
-                @error('state_id')
-                <livewire:mostrar-alerta :message="$message" />
-                @enderror
-            </div>
-        </div>
-    </div>
-
+<form class="md:w-1/2 space-y-5" wire:submit.prevent="createMedicalAppointment" novalidate>
     {{-- Peso y Talla --}}
     <div class="mt-4">
         <div class="md:flex md:flex-row md:justify-between md:space-x-3">
@@ -145,19 +40,19 @@
             {{-- Eval IMC --}}
             <div class="md:flex-col md:w-1/2">
                 <x-input-label for="eval_imc" :value="__('evaluación de imc')" class="uppercase" />
-                    @php
-                        $bajo = $eval_imc === 'Bajo Peso' ? true : false;
-                        $normal = $eval_imc === 'Normal' ? true : false;
-                        $moderado = $eval_imc === 'Sobrepeso' ? true : false;
-                        $alto = $eval_imc === 'Obesidad' ? true : false;
-                    @endphp
-                <x-text-input id="eval_imc" 
-                    @class(['block', 'mt-1', 'w-full', 'uppercase',
-                        '!text-blue-500' => $bajo,
-                        '!text-lime-500' => $normal,
-                        '!text-orange-500' => $moderado,
-                        '!text-red-500' => $alto
-                    ]) 
+                @php
+                    $isBajoPeso = $eval_imc === 'Bajo Peso' ? true : false;
+                    $isNormal = $eval_imc === 'Normal' ? true : false;
+                    $isSobrepeso = $eval_imc === 'Sobrepeso' ? true : false;
+                    $isObesidad = $eval_imc === 'Obesidad' ? true : false;
+                @endphp
+                <x-text-input id="eval_imc"
+                    @class(['block', 'mt-1', 'w-full', 'uppercase', 
+                    '!text-blue-500' => $isBajoPeso, 
+                    '!text-lime-500' => $isNormal, 
+                    '!text-orange-500' => $isSobrepeso,
+                    '!text-red-500' => $isObesidad,
+                    ])
                     type="text" :value="old('eval_imc')"
                     placeholder="en espera de evaluación" value="{{ $eval_imc }}" disabled />
                     @error('eval_imc')
@@ -272,7 +167,48 @@
             </div>
         </div>
     </div>
+
+    {{-- Temperatura Corporal --}}
+    <div class="mt-4">
+        <x-input-label class="uppercase" for="body_temp" :value="__('Temperatura Corporal')" />
+        <x-text-input id="body_temp" class="block mt-1 w-full" type="number" step="0.1" wire:model="body_temp" wire:model.live="body_temp" :value="old('body_temp')"
+            placeholder="Temperatura Corporal" />
+            @error('body_temp')
+                <livewire:mostrar-alerta :message="$message" />
+            @enderror
+    </div>
+
+    {{-- Alergias --}}
+    <div class="mt-4">
+        <x-input-label class="uppercase" for="allergies" :value="__('Alergias')" />
+        <x-text-input id="allergies" class="block mt-1 w-full" type="text" wire:model="allergies" wire:model.live="allergies" :value="old('allergies')"
+            placeholder="Alergias del paciente" />
+            @error('allergies')
+                <livewire:mostrar-alerta :message="$message" />
+            @enderror
+    </div>
+
+    {{-- Diagnostico --}}
+    <div class="mt-4">
+        <x-input-label class="uppercase" for="diagnostic" :value="__('Diagnostico')" />
+        <textarea wire:model="diagnostic" wire:model.live="diagnostic" id="diagnostic" cols="15" rows="5" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm" placeholder="Descripción del diagnostico realizado al paciente"></textarea>
+
+        @error('diagnostic')
+                <livewire:mostrar-alerta :message="$message" />
+            @enderror
+    </div>
+
+    {{-- Tratamiento --}}
+    <div class="mt-4">
+        <x-input-label class="uppercase" for="treatment" :value="__('Tratamiento')" />
+        <textarea wire:model="treatment" wire:model.live="treatment" id="treatment" cols="15" rows="5" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm" placeholder="Descripción del tratamiento recomendado al paciente"></textarea>
+
+        @error('treatment')
+                <livewire:mostrar-alerta :message="$message" />
+            @enderror
+    </div>
+
     <x-primary-button class="w-full justify-center mt-4">
-        Registrar Expediente
+        Registrar Consulta Medica
     </x-primary-button>
 </form>

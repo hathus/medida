@@ -1,7 +1,7 @@
 <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
-            @forelse ($expedientes as $expediente)    
+            @forelse ($expedientes as $expediente)
                 <div class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
                         <a href="{{route('mostrar-expediente', $expediente->id)}}" class="font-bold">
@@ -10,7 +10,7 @@
                         <p>
                             Edad:
                             <span class="text-sm font-bold">
-                                {{ floor($expediente->age->diffInYears(Carbon\Carbon::now())); }}
+                                {{ floor(Carbon\Carbon::parse($expediente->age)->diffInYears(Carbon\Carbon::now())); }}
                                 años
                             </span>
                         </p>
