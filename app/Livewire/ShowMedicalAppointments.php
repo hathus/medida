@@ -20,8 +20,9 @@ class ShowMedicalAppointments extends Component
     {
         $medical_record_id = $this->medical_record->id;
         $medical_appointments = MedicalAppointment::where('medical_record_id', $medical_record_id)->paginate(5);
+
         return view('livewire.show-medical-appointments', [
-            'medical_appointments' => $medical_appointments,
+            'consultas' => $medical_appointments,
             'expediente' => $this->medical_record,
         ]);
     }

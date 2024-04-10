@@ -54,13 +54,15 @@ class MedicalAppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MedicalAppointment $medicalAppointment)
+    public function edit($id)
     {
-        $medicalRecord = MedicalRecord::findOrFail($medicalAppointment);
-
+        $medApp = MedicalAppointment::findOrFail($id);
+        $medicalRecord = MedicalRecord::where('id', $medApp->medical_record_id)->first();
+        
         return view('medical_appointments.edit', [
-            'medicalAppointment' => $medicalAppointment,
-            'medicalRecord' => $medicalRecord,
+            'name' => $medicalRecord->name,
+            'fecha' => $medApp->created_at,
+            'id' => $medApp->id,
         ]);
     }
 }

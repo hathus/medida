@@ -22,8 +22,8 @@ Route::middleware('auth', 'verified')->group(function () {
     // Citas Medicas
     Route::get('medical_appointments/{medical_record}/index', [MedicalAppointmentController::class, 'index'])->name('consultas');
     Route::get('medical_appointments/{medical_record}/create', [MedicalAppointmentController::class, 'create'])->name('nueva-consulta');
-    Route::get('/medical_appointments/{medical_appointment}/edit', [MedicalAppointmentController::class, 'edit'])->name('editar-consulta');
-    Route::get('/medical_appointments/{medical_record}/show', [MedicalAppointmentController::class, 'show'])->name('mostrar-consultas');
+    Route::get('medical_appointments/{medical_appointments}/edit', [MedicalAppointmentController::class, 'edit'])->name('editar-consulta');
+    Route::get('medical_appointments/{medical_record}/show', [MedicalAppointmentController::class, 'show'])->name('mostrar-consultas');
 });
 
 Route::view('profile', 'profile')

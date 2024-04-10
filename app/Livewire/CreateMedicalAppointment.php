@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\MedicalAppointment;
 use Livewire\Component;
-use App\Models\MedicalRecord;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 
@@ -21,10 +20,10 @@ class CreateMedicalAppointment extends Component
     ];
 
     #[Locked]
-    public $medicalRecord;
+    public $consulta;
 
     #[Locked]
-    public $medicalRecord_id;
+    public $consulta_id;
 
     #[Validate('required', message: 'El campo peso es requerido')]
     public $weight = '';
@@ -78,18 +77,18 @@ class CreateMedicalAppointment extends Component
 
     public function mount($id)
     {
-        $this->medicalRecord = MedicalRecord::findOrFail($id);
-        $this->medicalRecord_id = $this->medicalRecord->id;
-        $this->weight = $this->medicalRecord->weight;
-        $this->size = $this->medicalRecord->size;
-        $this->changeSizeEvent($this->size);
-        $this->glucose = $this->medicalRecord->glucose;
-        $this->changeGlucoseEvent($this->glucose);
-        $this->exercised = $this->medicalRecord->exercised;
-        $this->fast_food = $this->medicalRecord->fast_food;
-        $this->smoking = $this->medicalRecord->smoking;
-        $this->alcoholism = $this->medicalRecord->alcoholism;
-        $this->drugs = $this->medicalRecord->drugs;
+        $this->consulta = MedicalAppointment::findOrFail($id);
+        $this->consulta_id = $this->consulta->id;
+        //$this->weight = $this->medicalRecord->weight;
+        //$this->size = $this->medicalRecord->size;
+        //$this->changeSizeEvent($this->size);
+        //$this->glucose = $this->medicalRecord->glucose;
+        //$this->changeGlucoseEvent($this->glucose);
+        //$this->exercised = $this->medicalRecord->exercised;
+        //$this->fast_food = $this->medicalRecord->fast_food;
+        //$this->smoking = $this->medicalRecord->smoking;
+        //$this->alcoholism = $this->medicalRecord->alcoholism;
+        //$this->drugs = $this->medicalRecord->drugs;
     }
 
     public function render()
