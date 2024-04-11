@@ -126,6 +126,7 @@
                             </svg>
                             Mostrar
                         </a>
+                        {{-- El boton se mostrara solamente si la consulta es igual al día en que se creó --}}
                         <a href="{{ route('editar-consulta', $consulta->id) }}"
                             class="border border-blue-700 py-2 px-4 rounded text-gray-100 hover:bg-blue-700 text-xs font-bold uppercase text-center flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -137,7 +138,7 @@
                         </a>
                         <button
                             class="border border-red-700 py-2 px-4 rounded text-gray-100 hover:bg-red-700 text-xs font-bold uppercase text-center flex items-center justify-center"
-                            wire:click="$dispatch('deleteAlertMedicalRecord', {{ $expediente->id }})">
+                            wire:click="$dispatch('deleteAlertMedicalApp', {{ $consulta->id }})">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -164,9 +165,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        Livewire.on('deleteAlertMedicalRecord', expedienteId => {
+        Livewire.on('deleteAlertMedicalApp', consultaId => {
             Swal.fire({
-                title: "¿Esta seguro de eliminar este expediente?",
+                title: "¿Esta seguro de eliminar esta consulta?",
                 text: "Esta acción no podrá revertirse!",
                 icon: "warning",
                 showCancelButton: true,
@@ -176,12 +177,12 @@
                 cancelButtonText: "Cancelar",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.dispatch('deleteMedicalRecord', {
-                        id: expedienteId
+                    Livewire.dispatch('deleteMedicalAppointment', {
+                        id: consultaId
                     });
                     Swal.fire({
-                        title: "Expediente Eliminado!",
-                        text: "El expediente ha sido eliminado.",
+                        title: "Consulta Eliminada!",
+                        text: "La consulta ha sido eliminada.",
                         icon: "success"
                     });
                 }
