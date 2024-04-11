@@ -26,4 +26,9 @@ class MedicalAppointment extends Model
         'treatment',
         'medical_record_id',
     ];
+
+    public function expediente()
+    {
+        return $this->belongsTo(MedicalRecord::class);
+    }
 }

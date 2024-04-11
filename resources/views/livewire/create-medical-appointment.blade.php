@@ -170,12 +170,71 @@
 
     {{-- Temperatura Corporal --}}
     <div class="mt-4">
-        <x-input-label class="uppercase" for="body_temp" :value="__('Temperatura Corporal')" />
-        <x-text-input id="body_temp" class="block mt-1 w-full" type="number" step="0.1" wire:model="body_temp" wire:model.live="body_temp" :value="old('body_temp')"
-            placeholder="Temperatura Corporal" />
-            @error('body_temp')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
+        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="body_temp" :value="__('Temperatura Corporal')" />
+                <x-text-input id="body_temp" class="block mt-1 w-full" type="number" step="0.1"
+                    wire:model="body_temp" wire:model.live="body_temp" :value="old('body_temp')"
+                    placeholder="Temperatura Corporal"
+                    wire:change="changeBodyTempEvent($event.target.value)" />
+                @error('body_temp')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="eval_body_temp" :value="__('Evaluación de Temperatura')" />
+                @php
+                    $temp = $body_temp;
+                    $baja = $temp < 35 ? true : false;
+                    $normal = $temp >= 35 && $temp <= 37.5 ? true : false;
+                    $febricula = $temp >= 37.6 && $temp <= 38 ? true : false;
+                    $leve = $temp >= 38.1 && $temp <= 38.5 ? true : false;
+                    $moderada = $temp >= 38.6 && $temp <= 39 ? true : false;
+                    $alta = $temp >= 39.1 ? true : false;
+                @endphp
+                <x-text-input id="eval_body_temp"
+                    @class(['block', 'mt-1', 'w-full', 'uppercase', 'bold',
+                        '!text-blue-500' => $baja,
+                        '!text-lime-500' => $normal,
+                        '!text-yellow-600' => $febricula,
+                        '!text-pink-600' => $leve,
+                        '!text-orange-600' => $moderada,
+                        '!text-red-600' => $alta,
+                    ]) 
+                    type="text" :value="old('eval_body_temp')" value="{{ $eval_body_temp }}" disabled
+                    placeholder="En espera de evaluación" />
+            </div>
+        </div>
+    </div>
+
+    {{-- Presión Arterial --}}
+    <div class="mt-4">
+        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="blood_pressure" :value="__('Presión Arterial')" />
+                <x-text-input id="blood_pressure" class="block mt-1 w-full" type="text"
+                    wire:model="blood_pressure" wire:model.live="blood_pressure" :value="old('blood_pressure')"
+                    placeholder="Presión Arterial ejem. 120/80" pattern="[0-9]{3}/[0-9]"
+                    wire:change="changeBloodPressureEvent($event.target.value)" />
+                @error('blood_pressure')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="eval_blood_press" :value="__('Evaluación Presión Arterial')" />
+                <x-text-input id="eval_blood_press"
+                    @class(['block', 'mt-1', 'w-full', 'uppercase', 'bold',
+                        '!text-blue-500'    => $blue,
+                        '!text-lime-500'    => $lime,
+                        '!text-yellow-600'  => $yellow,
+                        '!text-pink-600'    => $pink,
+                        '!text-orange-600'  => $orange,
+                        '!text-red-600'     => $red,
+                    ]) 
+                    type="text" :value="old('eval_blood_press')" value="{{ $eval_blood_press }}" disabled
+                    placeholder="En espera de evaluación" />
+            </div>
+        </div>
     </div>
 
     {{-- Alergias --}}

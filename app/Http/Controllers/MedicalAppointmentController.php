@@ -23,6 +23,7 @@ class MedicalAppointmentController extends Controller
 
     public function index($id)
     {
+        // TODO Si hay una consulta creada que corresponda al mismo día deshabilitar el botón de nueva consulta
         $medical_record = MedicalRecord::findOrFail($id);
 
         return view('medical_appointments.index', [

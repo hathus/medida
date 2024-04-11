@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\MedicalAppointment;
+use App\Models\MedicalRecord;
 use Livewire\Component;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
@@ -20,10 +21,10 @@ class CreateMedicalAppointment extends Component
     ];
 
     #[Locked]
-    public $consulta;
+    public $medical_record;
 
     #[Locked]
-    public $consulta_id;
+    public $medical_record_id;
 
     #[Validate('required', message: 'El campo peso es requerido')]
     public $weight = '';
@@ -63,8 +64,14 @@ class CreateMedicalAppointment extends Component
     #[Validate('required', message: 'El campo temperatura corporal es requerido')]
     public $body_temp;
 
-    #[Validate('required', message: 'El campo presión sangínea es requerido')]
+    // Evaluación de temperatura
+    public $eval_body_temp;
+
+    #[Validate('required', message: 'El campo presión arterial es requerido')]
     public $blood_pressure;
+
+    //Evaluación de presión arterial
+    public $eval_blood_press;
 
     #[Validate('required', message: 'El campo alergias es requerido')]
     public $allergies;
@@ -75,20 +82,17 @@ class CreateMedicalAppointment extends Component
     #[Validate('required', message: "El campo tratamiento es requerido")]
     public $treatment;
 
+    public $blue   = false;
+    public $lime   = false;
+    public $yellow = false;
+    public $pink   = false;
+    public $orange = false;
+    public $red    = false;
+
     public function mount($id)
     {
-        $this->consulta = MedicalAppointment::findOrFail($id);
-        $this->consulta_id = $this->consulta->id;
-        //$this->weight = $this->medicalRecord->weight;
-        //$this->size = $this->medicalRecord->size;
-        //$this->changeSizeEvent($this->size);
-        //$this->glucose = $this->medicalRecord->glucose;
-        //$this->changeGlucoseEvent($this->glucose);
-        //$this->exercised = $this->medicalRecord->exercised;
-        //$this->fast_food = $this->medicalRecord->fast_food;
-        //$this->smoking = $this->medicalRecord->smoking;
-        //$this->alcoholism = $this->medicalRecord->alcoholism;
-        //$this->drugs = $this->medicalRecord->drugs;
+        $this->medical_record = MedicalRecord::findOrFail($id);
+        $this->medical_record_id = $this->medical_record->id;
     }
 
     public function render()
@@ -100,39 +104,17 @@ class CreateMedicalAppointment extends Component
     {
         $datos_validados = $this->validate();;
         $datos_validados['imc'] = $this->imc;
-        $datos_validados['medical_record_id'] = $this->medicalRecord_id;
+        $datos_validados['medical_record_id'] = $this->medical_record_id;
 
-        $medicalRecord = $this->medicalRecord;
-
-        $medicalRecord->weight      = $datos_validados['weight'];
-        $medicalRecord->size        = $datos_validados['size'];
-        $medicalRecord->imc         = $datos_validados['imc'];
-        $medicalRecord->glucose     = $datos_validados['glucose'];
-        $medicalRecord->exercised   = $datos_validados['exercised'];
-        $medicalRecord->fast_food   = $datos_validados['fast_food'];
-        $medicalRecord->smoking     = $datos_validados['smoking'];
-        $medicalRecord->alcoholism  = $datos_validados['alcoholism'];
-        $medicalRecord->drugs       = $datos_validados['drugs'];
-
-        $this->authorize('update', $medicalRecord);
-
-        $done = $medicalRecord->save();
-
-        if($done){
-            $medicalAppointment['body_temp'] = $datos_validados['body_temp'];
-            $medicalAppointment['allergies'] = $datos_validados['allergies'];
-            $medicalAppointment['diagnostic'] = $datos_validados['diagnostic'];
-            $medicalAppointment['treatment'] = $datos_validados['treatment'];
-            $medicalAppointment['medical_record_id'] = $datos_validados['medical_record_id'];
-
-            MedicalAppointment::create($medicalAppointment);
-
-            session()->flash('message', 'La consulta fue creada correctamente');
-
-            return redirect()->route('consultas', $this->medicalRecord_id);
-        }
+        MedicalAppointment::create($datos_validados);
+        
+        session()->flash('message', 'La consulta fue creada correctamente');
+        
+        return redirect()->route('consultas', $this->medical_record_id);
+        
     }
 
+    // Evento que cambia con el ingreso del peso
     public function changeWeightEvent($value)
     {
         $this->weight = $value;
@@ -145,6 +127,7 @@ class CreateMedicalAppointment extends Component
         }
     }
 
+    // Evento que cambia con el ingreso del valor de la glucosa
     public function changeGlucoseEvent($value)
     {
         $this->glucose_eval = $value <= 120 ? 'Glucosa Controlada' : 'Glucosa Descontrolada';
@@ -156,6 +139,7 @@ class CreateMedicalAppointment extends Component
         }
     }
 
+    // Evento que cambia con la entrada de la talla o altura
     public function changeSizeEvent($value)
     {
         $this->size = $value;
@@ -175,6 +159,65 @@ class CreateMedicalAppointment extends Component
             $this->eval_imc = 'Sobrepeso';
         } else {
             $this->eval_imc = 'Obesidad';
+        }
+    }
+
+    // Evento que cambia con la entrada del valor de la temperatura
+    public function changeBodyTempEvent($value)
+    {
+        if ($value === '' || $this->body_temp === '') {
+            $this->eval_body_temp = '';
+        }
+
+        if ($this->body_temp < 35) {
+            $this->eval_body_temp = 'Baja';
+        } elseif ($this->body_temp >= 35 && $this->body_temp <= 37.5) {
+            $this->eval_body_temp = 'Normal';
+        } elseif ($this->body_temp >= 37.6 && $this->body_temp <= 38) {
+            $this->eval_body_temp = 'Febrícula';
+        } elseif ($this->body_temp >= 38.1 && $this->body_temp <= 38.5) {
+            $this->eval_body_temp = 'Leve';
+        } elseif ($this->body_temp >= 38.6 && $this->body_temp <= 39) {
+            $this->eval_body_temp = 'Moderada';
+        } else {
+            $this->eval_body_temp = 'Alta';
+        }
+    }
+
+    // Evalúa los niveles de la presión arterial
+    public function changeBloodPressureEvent($value)
+    {
+        if ($value === '' || $this->blood_pressure === '') {
+            $this->eval_blood_press = '';
+        }
+
+        $this->blue   = false;
+        $this->lime   = false;
+        $this->yellow = false;
+        $this->pink   = false;
+        $this->orange = false;
+        $this->red    = false;
+
+        $values = explode('/', $value);
+
+        if ($values[0] < 80 || $values[1] < 60) {
+            $this->eval_blood_press = 'Hipotensión';
+            $this->blue   = true;
+        } elseif ($values[0] <= 120 && $values[1] <= 80) {
+            $this->eval_blood_press = 'Normal';
+            $this->lime = true;
+        } elseif ($values[0] <= 129 && $values[1] <= 80) {
+            $this->eval_blood_press = 'Elevada';
+            $this->yellow = true;
+        } elseif ($values[0] <= 139 && $values[1] <= 89) {
+            $this->eval_blood_press = 'Hipertensión Nivel 1';
+            $this->pink   = true;
+        } elseif ($values[0] <= 179 && $values[1] <= 120) {
+            $this->eval_blood_press = 'Hipertensión Nivel 2';
+            $this->orange = true;
+        } else {
+            $this->eval_blood_press = 'Crisis Hipertensiva';
+            $this->red    = true;
         }
     }
 }

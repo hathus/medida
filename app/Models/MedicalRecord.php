@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class MedicalRecord extends Model
 {
     use HasFactory;
@@ -22,4 +23,9 @@ class MedicalRecord extends Model
         'state_id',
         'user_id',
     ];
+
+    public function consultas()
+    {
+        return $this->hasMany(MedicalAppointment::class);
+    }
 }
