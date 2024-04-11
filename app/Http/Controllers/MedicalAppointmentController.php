@@ -29,6 +29,7 @@ class MedicalAppointmentController extends Controller
         return view('medical_appointments.index', [
             'id' => $id,
             'name' => $medical_record->name,
+            'consultas' => $medical_record->consultas,
         ]);
     }
 

@@ -128,8 +128,8 @@
                         </a>
                         {{-- El boton se mostrara solamente si la consulta es igual al día en que se creó --}}
                         @php
-                            $now = \Carbon\Carbon::now()->format('d m Y');
-                            $appointment = \Carbon\Carbon::parse($consulta->created_at)->format('d m Y');
+                            $now = \Carbon\Carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
+                            $appointment = \Carbon\Carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
                         @endphp
                         @if ($now === $appointment)
                             <a href="{{ route('editar-consulta', $consulta->id) }}"

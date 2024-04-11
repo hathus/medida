@@ -7,7 +7,9 @@
                         <a href="{{route('mostrar-expediente', $expediente->id)}}" class="font-bold">
                             {{ $expediente->name }}
                         </a>
-                        <p>Última Consulta: {{ Carbon\Carbon::parse($expediente->consultas->first()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}</p>
+                        <p>Última Consulta: {{ Carbon\Carbon::parse($expediente->consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
+                        </p>
+                        <p>{{ Carbon\Carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p>
                         <p>
                             Edad:
                             <span class="text-sm font-bold">
