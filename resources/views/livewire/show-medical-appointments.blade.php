@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
-                        <a href="#"
+                        <a href="{{route('mostrar-consulta', $consulta->id)}}"
                             class="py-2 px-4 rounded border border-green-700 text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-1">

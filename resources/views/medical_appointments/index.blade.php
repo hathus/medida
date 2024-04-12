@@ -4,11 +4,9 @@
             {{ __('Consultas Medicas') }}
             de {{ $name }}
         </h2>
-        {{-- TODO Si hay una consulta creada que corresponda al mismo día deshabilitar el botón de nueva consulta se requiere comparar la fecha actual con la de la consulta --}}
         @php
             $now = \Carbon\Carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
-            $appointment = \Carbon\Carbon::parse($consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
-            
+            $appointment = \Carbon\Carbon::parse($consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');    
         @endphp
         @if ($appointment !== $now)
             <a href="{{ route('nueva-consulta', $id) }}"
