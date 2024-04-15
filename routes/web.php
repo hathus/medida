@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MedicalAppointmentController;
 use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
@@ -24,6 +25,10 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('medical_appointments/{medical_record}/create', [MedicalAppointmentController::class, 'create'])->name('nueva-consulta');
     Route::get('medical_appointments/{medical_appointments}/edit', [MedicalAppointmentController::class, 'edit'])->name('editar-consulta');
     Route::get('medical_appointments/{medical_record}/show', [MedicalAppointmentController::class, 'show'])->name('mostrar-consulta');
+
+    // Recetas/Menus
+    Route::get('recipes/index', [RecipeController::class, 'index'])->name('recetas');
+
 });
 
 Route::view('profile', 'profile')
