@@ -10,10 +10,6 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    // protected $casts = [
-    //     'tempos' => 'array',
-    // ];
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');

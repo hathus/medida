@@ -1,7 +1,7 @@
 <div class="py-3">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-slate-300">
-            <div class="grid grid-cols-3 gap-4 content-center p-4">
+            <div class="grid sm:grid-cols-3 gap-4 content-center p-4">
                 @forelse ($recetas as $receta)
                     @php
                         $itm1 = $receta->category_id === 1 ? 'border-sky-500' : '';
@@ -11,7 +11,7 @@
                         $itm5 = $receta->category_id === 5 ? 'border-blue-500' : '';
                     @endphp
                     <div @class(['border', 'text-center', 'p-4', 'rounded', $itm1, $itm2, $itm3, $itm4, $itm5])>
-                        <p class="text-slate-300">{{ $receta->name }}</p>
+                        <p class="text-slate-300 border-b mb-2">{{ $receta->name }}</p>
                         <p class="text-slate-300 text-sm">Recomendado para {{$receta->group_kc}} calorías diarias</p>
                         @forelse (json_decode($receta->tempos) as $tempo)
                             <p class="text-slate-300 text-start mt-2">
