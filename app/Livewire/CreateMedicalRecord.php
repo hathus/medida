@@ -24,6 +24,13 @@ class CreateMedicalRecord extends Component
         2 => 'Masculino',
     ];
 
+    public $physical_activity = [
+        1 => 'Poca o ninguna actividad',
+        2 => 'Actividad ligera',
+        3 => 'Actividad moderada',
+        4 => 'Actividad intensa',
+    ];
+
     #[Validate('required', message: 'El campo nombre es requerido!')]
     public $name;
 

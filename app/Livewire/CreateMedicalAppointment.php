@@ -20,6 +20,13 @@ class CreateMedicalAppointment extends Component
 
     ];
 
+    public $physical_activity = [
+        1 => 'Poca o ninguna actividad',
+        2 => 'Actividad ligera',
+        3 => 'Actividad moderada',
+        4 => 'Actividad intensa',
+    ];
+
     #[Locked]
     public $medical_record;
 

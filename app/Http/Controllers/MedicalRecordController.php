@@ -31,6 +31,13 @@ class MedicalRecordController extends Controller
 
     ];
 
+    public $physical_activity = [
+        1 => 'Poca o ninguna actividad',
+        2 => 'Actividad ligera',
+        3 => 'Actividad moderada',
+        4 => 'Actividad intensa',
+    ];
+
     public function changeAgeEvent($age)
     {
         $from_date = Carbon::parse(date('Y-m-d', strtotime($age)));
@@ -72,7 +79,7 @@ class MedicalRecordController extends Controller
         $medicalRecord['size'] = $medApp->size;
         $medicalRecord['imc'] = $medApp->imc;
         $medicalRecord['glucose'] = $medApp->glucose;
-        $medicalRecord['exercised_eval'] = $this->periodic_habits[$medApp->exercised];
+        $medicalRecord['exercised_eval'] = $this->physical_activity[$medApp->exercised];
         $medicalRecord['fast_food_eval'] = $this->periodic_habits[$medApp->fast_food];
         $medicalRecord['smoking_eval'] = $this->periodic_habits[$medApp->smoking];
         $medicalRecord['alcoholism_eval'] = $this->periodic_habits[$medApp->alcoholism];

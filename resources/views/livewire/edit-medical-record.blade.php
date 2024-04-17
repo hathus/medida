@@ -190,7 +190,7 @@
         <select id="exercised" wire:model="exercised" wire:model.live="exercised"
             class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
             <option value="">-- Seleccione una Opción --</option>
-            @foreach ($periodic_habits as $key => $answer)
+            @foreach ($physical_activity as $key => $answer)
             <option value="{{ $key }}">{{ $answer }}</option>
             @endforeach
         </select>
