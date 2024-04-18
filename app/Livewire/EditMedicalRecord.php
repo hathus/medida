@@ -14,10 +14,10 @@ class EditMedicalRecord extends Component
 {
     public $periodic_habits = [
         1 => 'Nunca',
-        2 => 'Socialmente',
-        3 => 'Regularmente',
-        4 => 'A Diario',
-
+        2 => 'Esporádicamente',
+        3 => 'Socialmente',
+        4 => 'Regularmente',
+        5 => 'A Diario',
     ];
 
     public $gender_list = [
@@ -26,10 +26,11 @@ class EditMedicalRecord extends Component
     ];
 
     public $physical_activity = [
-        1 => 'Poca o ninguna actividad',
-        2 => 'Actividad ligera',
-        3 => 'Actividad moderada',
-        4 => 'Actividad intensa',
+        1 => 'Mínimo (sedentario)',
+        2 => 'Bajo (ejercicio ligero menos de 3 veces a la semana)',
+        3 => 'Medio (ejercicio moderado 3-5 veces a la semana)',
+        4 => 'Alto nivel (ejercicio intenso al menos 5 veces a la semana)',
+        5 => 'Muy alto (ejercicio todos los días más de una vez)',
     ];
 
     #[Locked]
