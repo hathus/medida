@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-7">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -111,17 +111,29 @@
                 
 
                     <div class="mt-4 sm:flex sm:space-x-3 sm:space-y-0 space-y-2">
-                        <div class="sm:w-1/2">
+                        <div class="sm:w-1/4">
                             <label for="glucose">Glucosa</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medicalRecord->glucose }}" disabled>
                         </div>
-                        <div class="sm:w-1/2">
+                        <div class="sm:w-1/4">
                             <label for="glucose_eval">Evaluación Glucosa</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medicalRecord->glucose_eval }}" disabled>
+                        </div>
+                        <div class="sm:w-1/4">
+                            <label for="glucose">Metabolismo Basal</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ $medicalRecord->tmb }}" disabled>
+                        </div>
+                        <div class="sm:w-1/4">
+                            <label for="glucose_eval">Calorias por día</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ $medicalRecord->tmt }}" disabled>
                         </div>
                     </div>
 

@@ -18,24 +18,25 @@ class MedicalRecordController extends Controller
         return view('medical_records.index');
     }
 
+    public $periodic_habits = [
+        1 => 'Nunca',
+        2 => 'Esporádicamente',
+        3 => 'Socialmente',
+        4 => 'Regularmente',
+        5 => 'A Diario',
+    ];
+
     public $gender_list = [
         1 => 'Femenino',
         2 => 'Masculino',
     ];
 
-    public $periodic_habits = [
-        1 => 'Nunca',
-        2 => 'Socialmente',
-        3 => 'Regularmente',
-        4 => 'A Diario',
-
-    ];
-
     public $physical_activity = [
-        1 => 'Poca o ninguna actividad',
-        2 => 'Actividad ligera',
-        3 => 'Actividad moderada',
-        4 => 'Actividad intensa',
+        1 => 'Mínimo (sedentario)',
+        2 => 'Bajo (ejercicio ligero menos de 3 veces a la semana)',
+        3 => 'Medio (ejercicio moderado 3-5 veces a la semana)',
+        4 => 'Alto nivel (ejercicio intenso al menos 5 veces a la semana)',
+        5 => 'Muy alto (ejercicio todos los días más de una vez)',
     ];
 
     public function changeAgeEvent($age)
@@ -78,6 +79,8 @@ class MedicalRecordController extends Controller
         $medicalRecord['weight'] = $medApp->weight;
         $medicalRecord['size'] = $medApp->size;
         $medicalRecord['imc'] = $medApp->imc;
+        $medicalRecord['tmb'] = $medApp->tmb;
+        $medicalRecord['tmt'] = $medApp->tmt;
         $medicalRecord['glucose'] = $medApp->glucose;
         $medicalRecord['exercised_eval'] = $this->physical_activity[$medApp->exercised];
         $medicalRecord['fast_food_eval'] = $this->periodic_habits[$medApp->fast_food];

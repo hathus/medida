@@ -2,21 +2,21 @@
     {{-- Nombre del paciente --}}
     <div class="mt-4">
         <x-input-label class="uppercase" for="name" :value="__('Nombre')" />
-        <x-text-input id="name" class="block mt-1 w-full" type="text" wire:model="name" wire:model.live="name" :value="old('name')"
-            placeholder="Nombre Completo del Paciente" />
-            @error('name')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
+        <x-text-input id="name" class="block mt-1 w-full" type="text" wire:model="name" wire:model.live="name"
+            :value="old('name')" placeholder="Nombre Completo del Paciente" />
+        @error('name')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
     </div>
 
     {{-- Email del paciente --}}
     <div class="mt-4">
         <x-input-label class="uppercase" for="email" :value="__('Correo Electrónico')" />
-        <x-text-input id="email" class="block mt-1 w-full" type="email" wire:model="email" wire:model.live="email" :value="old('email')"
-            placeholder="example@example.com" />
-            @error('email')
+        <x-text-input id="email" class="block mt-1 w-full" type="email" wire:model="email" wire:model.live="email"
+            :value="old('email')" placeholder="example@example.com" />
+        @error('email')
             <livewire:mostrar-alerta :message="$message" />
-            @enderror
+        @enderror
     </div>
 
     {{-- Teléfono  Genero --}}
@@ -27,23 +27,23 @@
                 <x-input-label class="uppercase" for="phone" :value="__('Teléfono')" />
                 <x-text-input id="phone" class="block mt-1 w-full" type="tel" placeholder="0000000000"
                     wire:model="phone" wire:model.live="phone" :value="old('phone')" />
-                    @error('phone')
+                @error('phone')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
 
             <div class="flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- genero de nacimiento --}}
                 <x-input-label class="uppercase" for="gender" :value="__('Genero de Nacimiento')" />
-                <select id="gender" wire:model="gender" wire:model.live="gender"
+                <select id="gender" wire:model="gender" wire:model.live="gender" wire:change='changeGender()'
                     class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
                     <option value="">-- Seleccione un Genero --</option>
                     @foreach ($gender_list as $key => $gender)
-                    <option value="{{ $key }}">{{ $gender }}</option>
+                        <option value="{{ $key }}">{{ $gender }}</option>
                     @endforeach
                 </select>
                 @error('gender')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -55,20 +55,21 @@
             <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- fecha de nacimiento --}}
                 <x-input-label class="uppercase" for="age" :value="__('Fecha de Nacimiento')" />
-                <x-text-input id="age" class="block mt-1 w-full" type="date" wire:model="age" wire:model.live="age" wire:change="changeAgeEvent($event.target.value)"
-                    :value="old('age')" />
+                <x-text-input id="age" class="block mt-1 w-full" type="date" wire:model="age"
+                    wire:model.live="age" wire:change="changeAgeEvent($event.target.value)" :value="old('age')" />
                 @error('age')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
-    
+
             <div class="md:flex-col md:w-1/2">
-                {{-- Calcúlo de edad--}}
+                {{-- Calcúlo de edad --}}
                 <x-input-label class="uppercase" for="age_eval" :value="__('Edad (Años)')" />
-                <x-text-input id="age_eval" class="block mt-1 w-full uppercase" type="tel" placeholder="En espera de evaluación" wire:model="age_eval"
-                    wire:model.live="age_eval" :value="old('age_eval')" disabled/>
+                <x-text-input id="age_eval" class="block mt-1 w-full uppercase" type="tel"
+                    placeholder="En espera de evaluación" wire:model="age_eval" wire:model.live="age_eval"
+                    :value="old('age_eval')" disabled />
                 @error('age_eval')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -80,11 +81,11 @@
             <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- ciudad --}}
                 <x-input-label class="uppercase" for="city" :value="__('Ciudad')" />
-                <x-text-input id="city" class="block mt-1 w-full uppercase" type="text" wire:model="city" wire:model.live="city"
-                    :value="old('city')" placeholder="Ciudad o Municipio" />
-                    @error('city')
+                <x-text-input id="city" class="block mt-1 w-full uppercase" type="text" wire:model="city"
+                    wire:model.live="city" :value="old('city')" placeholder="Ciudad o Municipio" />
+                @error('city')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
 
             <div class="md:flex-col md:w-1/2">
@@ -98,7 +99,7 @@
                     @endforeach
                 </select>
                 @error('state_id')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -110,22 +111,22 @@
             <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- Peso --}}
                 <x-input-label for="weight" :value="__('Peso')" class="uppercase" />
-                <x-text-input id="weight" wire:model="weight" wire:model.live="weight" class="block mt-1 w-full" type="number" step="1"
-                    min="0" :value="old('weight')" placeholder="ejemplo: 55"
+                <x-text-input id="weight" wire:model="weight" wire:model.live="weight" class="block mt-1 w-full"
+                    type="number" step="1" min="0" :value="old('weight')" placeholder="ejemplo: 55"
                     wire:change="changeWeightEvent($event.target.value)" />
-                    @error('weight')
+                @error('weight')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
                 {{-- Talla o Altura --}}
                 <x-input-label for="size" :value="__('Talla/Estatura')" class="uppercase" />
-                <x-text-input id="size" wire:model="size" wire:model.live="size" class="block mt-1 w-full" type="number" step="0.01"
-                    min="0" :value="old('size')" placeholder="ejemplo: 1.55"
+                <x-text-input id="size" wire:model="size" wire:model.live="size" class="block mt-1 w-full"
+                    type="number" step="0.01" min="0" :value="old('size')" placeholder="ejemplo: 1.55"
                     wire:change="changeSizeEvent($event.target.value)" />
-                    @error('size')
+                @error('size')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -136,33 +137,36 @@
             {{-- IMC --}}
             <div class="md:flex-col md:w-1/2 mb-4">
                 <x-input-label for="imc" :value="__('IMC (Índice de Masa Corporal)')" class="uppercase" />
-                <x-text-input id="imc" wire:model="imc" wire:model.live="imc" class="block mt-1 w-full uppercase" type="text" :value="old('imc')"
+                <x-text-input id="imc" wire:model="imc" wire:model.live="imc"
+                    class="block mt-1 w-full uppercase" type="text" :value="old('imc')"
                     placeholder="en espera de evaluación" value="{{ $imc }}" disabled />
-                    @error('imc')
+                @error('imc')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
             {{-- Eval IMC --}}
             <div class="md:flex-col md:w-1/2">
                 <x-input-label for="eval_imc" :value="__('evaluación de imc')" class="uppercase" />
-                    @php
-                        $bajo = $eval_imc === 'Bajo Peso' ? true : false;
-                        $normal = $eval_imc === 'Normal' ? true : false;
-                        $moderado = $eval_imc === 'Sobrepeso' ? true : false;
-                        $alto = $eval_imc === 'Obesidad' ? true : false;
-                    @endphp
-                <x-text-input id="eval_imc" 
-                    @class(['block', 'mt-1', 'w-full', 'uppercase',
-                        '!text-blue-500' => $bajo,
-                        '!text-lime-500' => $normal,
-                        '!text-orange-500' => $moderado,
-                        '!text-red-500' => $alto
-                    ]) 
-                    type="text" :value="old('eval_imc')"
+                @php
+                    $bajo = $eval_imc === 'Bajo Peso' ? true : false;
+                    $normal = $eval_imc === 'Normal' ? true : false;
+                    $moderado = $eval_imc === 'Sobrepeso' ? true : false;
+                    $alto = $eval_imc === 'Obesidad' ? true : false;
+                @endphp
+                <x-text-input id="eval_imc" @class([
+                    'block',
+                    'mt-1',
+                    'w-full',
+                    'uppercase',
+                    '!text-blue-500' => $bajo,
+                    '!text-lime-500' => $normal,
+                    '!text-orange-500' => $moderado,
+                    '!text-red-500' => $alto,
+                ]) type="text" :value="old('eval_imc')"
                     placeholder="en espera de evaluación" value="{{ $eval_imc }}" disabled />
-                    @error('eval_imc')
+                @error('eval_imc')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -174,21 +178,23 @@
                 {{-- glucosa --}}
                 <x-input-label class="uppercase" for="glucose" :value="__('Nivel de Glucosa')" />
                 <x-text-input id="glucose" class="block mt-1 w-full uppercase" type="number" step="1"
-                    min="0" wire:model="glucose" wire:model.live="glucose" :value="old('glucose')" placeholder="ejemplo: 95"
-                    wire:change="changeGlucoseEvent($event.target.value)" />
-                    @error('glucose')
+                    min="0" wire:model="glucose" wire:model.live="glucose" :value="old('glucose')"
+                    placeholder="ejemplo: 95" wire:change="changeGlucoseEvent($event.target.value)" />
+                @error('glucose')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
 
             <div class="md:flex-col md:w-1/2">
                 {{-- glucosa evaluación --}}
                 <x-input-label class="uppercase" for="glucose_eval" :value="__('Evaluación de Glucosa')" />
-                <x-text-input id="glucose_eval" class="block mt-1 w-full uppercase {{$glucose_eval_color > 120 ? '!text-red-700' : '!text-lime-700'}}" type="text" :value="old('glucose_eval')"
-                    value="{{ $glucose_eval }}" disabled placeholder="En espera de evaluación" />
-                    @error('glucose_eval')
+                <x-text-input id="glucose_eval"
+                    class="block mt-1 w-full uppercase {{ $glucose_eval_color > 120 ? '!text-red-700' : '!text-lime-700' }}"
+                    type="text" :value="old('glucose_eval')" value="{{ $glucose_eval }}" disabled
+                    placeholder="En espera de evaluación" />
+                @error('glucose_eval')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -198,15 +204,41 @@
         {{-- ejercicio --}}
         <x-input-label class="uppercase" for="exercised" :value="__('¿Realiza una actividad fisica?')" />
         <select id="exercised" wire:model="exercised" wire:model.live="exercised"
+            wire:change="changeExercisedEvent()"
             class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
-            <option value="">-- Seleccione una Opción --</option>
+            <option value="0">-- Seleccione una Opción --</option>
             @foreach ($physical_activity as $key => $answer)
                 <option value="{{ $key }}">{{ $answer }}</option>
             @endforeach
         </select>
         @error('exercised')
-        <livewire:mostrar-alerta :message="$message" />
+            <livewire:mostrar-alerta :message="$message" />
         @enderror
+    </div>
+
+    {{-- Tasa Metabolica Basal y Tasa Metabolica Total --}}
+    <div class="mt-4">
+        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
+            {{-- Tasa Metabolica Basal --}}
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="tmb" :value="__('Metabolismo Basal')" />
+                <x-text-input id="tmb" class="block mt-1 w-full uppercase" type="text" :value="old('tmb')"
+                    value="{{ $tmb }}" disabled placeholder="En espera de evaluación" />
+                @error('tmb')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+
+            {{-- Tasa metabolica total --}}
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="tmt" :value="__('Calorias necesarias por día')" />
+                <x-text-input id="tmt" class="block mt-1 w-full uppercase" type="text" :value="old('tmt')"
+                    value="{{ $tmt }}" disabled placeholder="En espera de evaluación" />
+                @error('tmt')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+        </div>
     </div>
 
     {{-- Comida chatarra y Cigarro --}}
@@ -222,7 +254,7 @@
                     @endforeach
                 </select>
                 @error('fast_food')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
@@ -235,7 +267,7 @@
                     @endforeach
                 </select>
                 @error('smoking')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -254,7 +286,7 @@
                     @endforeach
                 </select>
                 @error('alcoholism')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
@@ -267,7 +299,7 @@
                     @endforeach
                 </select>
                 @error('drugs')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>

@@ -24,18 +24,25 @@
                     </div>
 
                     <div class="mt-4 sm:flex  sm:space-x-2 sm:space-y-0 space-y-2">
-                        <div class="sm:w-3/4">
+                        <div class="sm:w-3/5">
                             <label for="name">Nombre</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->expediente->name }}" disabled>
                         </div>
 
-                        <div class="sm:w-1/4">
+                        <div class="sm:w-1/5">
                             <label for="gender">Genero</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->eval_gender }}" disabled>
+                        </div>
+
+                        <div class="sm:w-1/5">
+                            <label for="gender">Edad</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ floor(Carbon\Carbon::parse($medApp->expediente->age)->diffInYears(Carbon\Carbon::now())); }} años" disabled>
                         </div>
                     </div>
 
@@ -105,6 +112,25 @@
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->eval_blood_press }}" disabled>
+                        </div>
+                    </div>
+
+                    {{-- TMB y TMT --}}
+                    <div class="mt-4 sm:flex sm:space-x-2 sm:space-y-0 space-y-0">
+                        {{-- TMB --}}
+                        <div class="sm:w-1/2">
+                            <label for="allergies">Metabolismo Basal</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ $medApp->tmb }}" disabled>
+                        </div>
+
+                        {{-- TMT --}}
+                        <div class="sm:w-1/2">
+                            <label for="allergies">Calorias por día</label>
+                            <input
+                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
+                                type="text" value="{{ $medApp->tmt }}" disabled>
                         </div>
                     </div>
 

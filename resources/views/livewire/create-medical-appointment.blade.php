@@ -92,7 +92,7 @@
     <div class="mt-4">
         {{-- ejercicio --}}
         <x-input-label class="uppercase" for="exercised" :value="__('¿Realiza una actividad fisica?')" />
-        <select id="exercised" wire:model="exercised" wire:model.live="exercised"
+        <select id="exercised" wire:model="exercised" wire:model.live="exercised" wire:change='changeExercisedEvent()'
             class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
             <option value="">-- Seleccione una Opción --</option>
             @foreach ($physical_activity as $key => $answer)
@@ -102,6 +102,31 @@
         @error('exercised')
         <livewire:mostrar-alerta :message="$message" />
         @enderror
+    </div>
+
+    {{-- Tasa Metabolica Basal y Tasa Metabolica Total --}}
+    <div class="mt-4">
+        <div class="md:flex md:flex-row md:justify-between md:space-x-3">
+            {{-- Tasa Metabolica Basal --}}
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="tmb" :value="__('Metabolismo Basal')" />
+                <x-text-input id="tmb" class="block mt-1 w-full uppercase" type="text" :value="old('tmb')"
+                    value="{{ $tmb }}" disabled placeholder="En espera de evaluación" />
+                @error('tmb')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+
+            {{-- Tasa metabolica total --}}
+            <div class="md:flex-col md:w-1/2 mb-4">
+                <x-input-label class="uppercase" for="tmt" :value="__('Calorias necesarias por día')" />
+                <x-text-input id="tmt" class="block mt-1 w-full uppercase" type="text" :value="old('tmt')"
+                    value="{{ $tmt }}" disabled placeholder="En espera de evaluación" />
+                @error('tmt')
+                    <livewire:mostrar-alerta :message="$message" />
+                @enderror
+            </div>
+        </div>
     </div>
 
     {{-- Comida chatarra y Cigarro --}}

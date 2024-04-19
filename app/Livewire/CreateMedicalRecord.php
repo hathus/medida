@@ -80,8 +80,12 @@ class CreateMedicalRecord extends Component
 
     public $eval_imc_color;
 
+    public $tmb;
+
     #[Validate('required', message: 'El campo ejercicio es requerido')]
     public $exercised;
+
+    public $tmt;
 
     #[Validate('required', message: 'El campo comida chatarra es requerido')]
     public $fast_food;
@@ -101,6 +105,8 @@ class CreateMedicalRecord extends Component
         // Validamos los datos del formulario
         $datosValidados = $this->validate();
         $datosValidados['imc'] = $this->imc;
+        $datosValidados['tmb'] = $this->tmb;
+        $datosValidados['tmt'] = $this->tmt;
 
         // Separamos los datos que van a ser procesados por los modelos
         // Datos que van a medical record 
@@ -108,8 +114,7 @@ class CreateMedicalRecord extends Component
 
         $doneMedicalRecord = MedicalRecord::create($datosValidados);
 
-        if($doneMedicalRecord)
-        {
+        if ($doneMedicalRecord) {
             $datosValidados['medical_record_id']     = $doneMedicalRecord->id;
             MedicalAppointment::create($datosValidados);
             session()->flash('message', 'El expediente se creó correctamente!');
@@ -130,13 +135,78 @@ class CreateMedicalRecord extends Component
         return view('livewire.create-medical-record', ['states' => $states]);
     }
 
-    public function changeAgeEvent($value)
+    // evento que cambia el genero
+    public function changeGender()
     {
-        $from_date = Carbon::parse(date('Y-m-d', strtotime($value)));
-        $current_date = Carbon::now();
-        $this->age_eval = floor($from_date->diffInYears($current_date));
+        $this->tmt = '';
+        $this->exercised = '';
+        $this->calculateTMB();
     }
 
+    // Evento que cambia la edad
+    public function changeAgeEvent($value)
+    {
+        $this->tmt = '';
+        $this->exercised = '';
+
+        if ($value === '') {
+            $this->age_eval = '';
+            $this->age = '';
+            $from_date = '';
+        } else {
+            $from_date = Carbon::parse(date('Y-m-d', strtotime($value)));
+            $current_date = Carbon::now();
+            $this->age_eval = floor($from_date->diffInYears($current_date));
+            $this->calculateTMB();
+        }
+    }
+
+    // Evento que cambia el peso
+    public function changeWeightEvent($value)
+    {
+        $this->weight = $value;
+
+        $this->tmt = '';
+        $this->exercised = '';
+
+        if ($value === '' || $this->size === '') {
+            $this->imc = '';
+            $this->eval_imc = '';
+        } else {
+            $this->changeSizeEvent($this->size);
+        }
+    }
+
+    // Evento que cambia la talla
+    public function changeSizeEvent($value)
+    {
+        $this->size = $value;
+
+        if ($value === '' || $this->weight === '') {
+            $this->imc = '';
+            $this->eval_imc = '';
+            $this->eval_imc_color = '';
+        } else {
+            $this->imc = $this->weight / ($this->size ** 2);
+            $this->calculateTMB();
+
+            if ($this->imc < 18.5) {
+                $this->eval_imc_color = "";
+                $this->eval_imc = 'Bajo Peso';
+            } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
+                $this->eval_imc_color = "";
+                $this->eval_imc = 'Normal';
+            } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
+                $this->eval_imc_color = "";
+                $this->eval_imc = 'Sobrepeso';
+            } else {
+                $this->eval_imc_color = "";
+                $this->eval_imc = 'Obesidad';
+            }
+        }
+    }
+
+    // Evento que cambia la glucosa
     public function changeGlucoseEvent($value)
     {
         $this->glucose_eval = $value <= 120 ? 'Glucosa Controlada' : 'Glucosa Descontrolada';
@@ -148,42 +218,65 @@ class CreateMedicalRecord extends Component
         }
     }
 
-    public function changeWeightEvent($value)
+    // Evento que calcula el tmb
+    public function calculateTMB()
     {
-        $this->weight = $value;
-
-        if ($value === '' || $this->size === '') {
-            $this->imc = '';
-            $this->eval_imc = '';
+        /**
+         * Para mujeres: TMB = 665.1 + (9.56 x peso, kg) + (1.85 x altura, cm) – (4.68 x edad, años)
+         * Para hombres: TMB = 66.47 + (13.75 x peso, kg) + (5.00 x altura, cm) – (6.77 x edad, años)
+         */
+        if ($this->age === null || $this->weight === '' || $this->size === '' || $this->age_eval === null) {
+            $this->tmb = '';
+            $this->tmt = '';
         } else {
-            $this->changeSizeEvent($this->size);
+            if ($this->gender_list[$this->gender] === "Femenino") {
+                $this->tmb = (10 * $this->weight) + (6.25 * ($this->size * 100)) - (5 * $this->age_eval) - 161;
+            } else {
+                $this->tmb = (10 * $this->weight) + (6.25 * ($this->size * 100)) - (5 * $this->age_eval) + 5;
+            }
         }
     }
 
-    public function changeSizeEvent($value)
+    // Evento que calcula el tmt
+    public function calculateTMT()
     {
-        $this->size = $value;
+        /**
+         * Mínimo (sedentario) – 1.2
+         * Bajo (ejercicio ligero menos de 3 veces a la semana) – 1.375
+         * Medio (ejercicio moderado 3-5 veces a la semana) – 1.55
+         * Alto nivel (ejercicio intenso al menos 5 veces a la semana) – 1.725
+         * Muy alto (ejercicio todos los días más de una vez) – 1.9
+         */
 
-        if ($value === '' || $this->weight === '') {
-            $this->imc = '';
-            $this->eval_imc = '';
-            $this->eval_imc_color = '';
-        } else {
-            $this->imc = $this->weight / ($this->size ** 2);
+        switch ($this->exercised) {
+            case "1":
+                $this->tmt = $this->tmb * 1.2;
+                break;
+            case "2":
+                $this->tmt = $this->tmb * 1.375;
+                break;
+            case "3":
+                $this->tmt = $this->tmb * 1.55;
+                break;
+            case "4":
+                $this->tmt = $this->tmb * 1.725;
+                break;
+            case "5":
+                $this->tmt = $this->tmb * 1.9;
+                break;
+            default:
+                $this->tmt = 0;
         }
+    }
 
-        if ($this->imc < 18.5) {
-            $this->eval_imc_color = "";
-            $this->eval_imc = 'Bajo Peso';
-        } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
-            $this->eval_imc_color = "";
-            $this->eval_imc = 'Normal';
-        } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
-            $this->eval_imc_color = "";
-            $this->eval_imc = 'Sobrepeso';
+    // Evento que cambia el ejercicio
+    public function changeExercisedEvent()
+    {
+        if ($this->age === null || $this->weight === '' || $this->size === '' || $this->age_eval === null) {
+            $this->tmb = '';
+            $this->tmt = '';
         } else {
-            $this->eval_imc_color = "";
-            $this->eval_imc = 'Obesidad';
+            $this->calculateTMT();
         }
     }
 }
