@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('group_kc');
+            $table->integer('total_cal');
             $table->json('tempos')->nullable();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

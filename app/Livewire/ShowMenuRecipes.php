@@ -10,21 +10,19 @@ class ShowMenuRecipes extends Component
 {
 
     #[Locked]
-    public $category_id;
+    // public $category_id;
 
-    public function category($id)
-    {
-        $this->category_id = $id;
-        $this->dispatch('select-category', categoryId: $this->category_id);
-    }
+    // public function category($id)
+    // {
+    //     $this->category_id = $id;
+    //     $this->dispatch('select-category', categoryId: $this->category_id);
+    // }
 
     // función que hace el render de la vista
     public function render()
     {
-        $categories = Category::all();
+        // $categories = Category::all();
 
-        return view('livewire.show-menu-recipes', [
-            'categories' => $categories,
-        ]);
+        return view('livewire.show-menu-recipes');
     }
 }
