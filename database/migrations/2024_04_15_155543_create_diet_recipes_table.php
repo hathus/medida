@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('diet_recipes', function (Blueprint $table) {
             $table->id();
-            $table->json('diet')->nullable();
+            $table->integer('total_cal')->nullable();
+            $table->integer('group')->nullable();
             $table->foreignId('medical_appointment_id')->constrained();
             $table->timestamps();
         });

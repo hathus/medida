@@ -217,8 +217,8 @@ class CreateMedicalAppointment extends Component
     public function calculateTMB()
     {
         /**
-         * Para mujeres: TMB = 665.1 + (9.56 x peso, kg) + (1.85 x altura, cm) – (4.68 x edad, años)
-         * Para hombres: TMB = 66.47 + (13.75 x peso, kg) + (5.00 x altura, cm) – (6.77 x edad, años)
+         * TMBHombre​=(10×peso[kg])+(6.25×altura[cm])−(5×edad[an˜os])+5
+         * TMBMujer=(10×peso[kg])+(6.25×altura[cm])−(5×edad[aos]n˜)−161
          */
         if ($this->age === null || $this->weight === '' || $this->size === '' || $this->age_eval === null) {
             $this->tmb = '';
