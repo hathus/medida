@@ -10,7 +10,8 @@
                     onclick="window.print()">
                     Imprimir
                 </button>
-                <a href="{{ route('recetas') }}" class="flex justify-center w-40 border rounded p-1 border-orange-500 hover:bg-orange-600">
+                <a href="{{ route('recetas') }}"
+                    class="flex justify-center w-40 border rounded p-1 border-orange-500 hover:bg-orange-600">
                     Regresar
                 </a>
             </div>
@@ -54,7 +55,8 @@
                                     $col2,
                                 ])>
                                     <div class="flex w-full">
-                                        <p class="uppercase bold text-sm flex w-3/6 justify-start">{{ $tempo->name }}</p>
+                                        <p class="uppercase bold text-sm flex w-3/6 justify-start">{{ $tempo->name }}
+                                        </p>
                                         <p class="uppercase bold text-sm flex w-2/6 justify-start">Elementos</p>
                                         <p class="uppercase bold text-sm flex w-1/6 justify-end">Aporta</p>
                                     </div>
