@@ -28,6 +28,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
     // Recetas/Menus
     Route::get('recipes/index', [RecipeController::class, 'index'])->name('recetas');
+    Route::get('recipes/{group_id}/{max_factor}/show', [RecipeController::class, 'show'])->name('mostrar-recetas');
 
 });
 

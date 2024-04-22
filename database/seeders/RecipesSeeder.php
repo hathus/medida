@@ -301,7 +301,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 01',
             'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu01),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -311,7 +311,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 02',
             'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu02),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -321,7 +321,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 03',
             'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu03),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -331,7 +331,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 04',
             'total_cal' => '1920', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu04),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -341,7 +341,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 05',
             'total_cal' => '1910', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu05),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -351,7 +351,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 06',
             'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu06),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -361,7 +361,7 @@ class RecipesSeeder extends Seeder
         DB::table('recipes')->insert([
             'name' => 'Menu 07',
             'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
-            'group' => '1',
+            'group_id' => '1',
             'tempos' => json_encode($menu07),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

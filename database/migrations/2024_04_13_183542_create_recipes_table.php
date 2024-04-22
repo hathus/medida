@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('total_cal');
-            $table->integer('group');
+            $table->integer('group_id');
             $table->json('tempos')->nullable();
             $table->timestamps();
         });

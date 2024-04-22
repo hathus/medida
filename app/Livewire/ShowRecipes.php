@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Recipe;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -41,17 +42,35 @@ class ShowRecipes extends Component
         $this->minFactor = $this->activityFactor[$factorId] - 399;
         $this->maxFactor = $this->activityFactor[$factorId];
 
-        $this->recipes = Recipe::whereBetween('total_cal', [$this->minFactor, $this->maxFactor])->paginate(7);
+        //$this->recipes = Recipe::whereBetween('total_cal', [$this->minFactor, $this->maxFactor])->paginate(7);
+
+        $this->recipes = Recipe::select(DB::raw('count(id) as total'), 'group_id')
+            ->whereBetween('total_cal', [$this->minFactor, $this->maxFactor])
+            ->groupBy('group_id')
+            ->paginate(6);
     }
 
     public function render()
     {
-        if($this->recipes === null) {
-            $this->recipes = Recipe::whereBetween('total_cal', ['1801', '2200'])->paginate(7);
+        if ($this->recipes === null) {
+            $this->maxFactor = '2200';
+            $this->recipes = Recipe::select(DB::raw('count(id) as total'), 'group_id')
+                ->whereBetween('total_cal', ['1801', $this->maxFactor])
+                ->groupBy('group_id')
+                ->paginate(7);
         }
 
         return view('livewire.show-recipes', [
             'recipes' => $this->recipes,
+            'maxFactor' => $this->maxFactor,
+        ]);
+    }
+
+    public function showMenus($groupId, $maxFactor)
+    {
+        return redirect()->route('mostrar-recetas', [
+            'group_id' => $groupId,
+            'max_factor' => $maxFactor,
         ]);
     }
 }
