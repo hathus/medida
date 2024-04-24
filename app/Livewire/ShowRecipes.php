@@ -25,6 +25,7 @@ class ShowRecipes extends Component
         11 => '5000',
         12 => '5400',
         13 => '5800',
+        14 => '6200',
     ];
 
     #[Locked]
