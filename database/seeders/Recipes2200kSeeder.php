@@ -6,14 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RecipesSeeder extends Seeder
+class Recipes2200kSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $menu01 = [
+        $menu01_g1 = [
             [
                 'name' => 'Desayuno',
                 'items' => [
@@ -54,7 +54,7 @@ class RecipesSeeder extends Seeder
             ],
         ];
 
-        $menu02 = [
+        $menu02_g1 = [
             [
                 'name' => 'Desayuno',
                 'items' => [ // Desayuno
@@ -96,7 +96,7 @@ class RecipesSeeder extends Seeder
             ],
         ];
 
-        $menu03 = [
+        $menu03_g1 = [
             [
                 'name' => 'Desayuno',
                 'items' => [ //Desayuno
@@ -136,7 +136,7 @@ class RecipesSeeder extends Seeder
             ],
         ];
 
-        $menu04 = array(
+        $menu04_g1 = array(
             [
                 'name' => 'Desayuno',
                 'items' => [  // Desayuno
@@ -177,7 +177,7 @@ class RecipesSeeder extends Seeder
             ],
         );
 
-        $menu05 = array(
+        $menu05_g1 = array(
             [
                 'name' => 'Desayuno',
                 'items' => [
@@ -218,7 +218,7 @@ class RecipesSeeder extends Seeder
             ],
         );
 
-        $menu06 = array(
+        $menu06_g1 = array(
             [
                 'name' => 'Desayuno',
                 'items' => [
@@ -257,7 +257,7 @@ class RecipesSeeder extends Seeder
             ],
         );
 
-        $menu07 = array(
+        $menu07_g1 = array(
             [
                 'name' => 'Desayuno',
                 'items' => [
@@ -296,73 +296,123 @@ class RecipesSeeder extends Seeder
                 ]
             ],);
 
+        $menu01_g2 = [
+            [
+                'name' => 'Desayuno',
+                'items' => [ // Desayuno
+                    ['id' => 1, 'desc' => 'Taza de leche descremada', 'quant' => '1 taza', 'calories' => 80],
+                    ['id' => 2, 'desc' => 'Pan integral', 'quant' => '2 rebanadas', 'calories' => 140],
+                    ['id' => 3, 'desc' => 'Aguacate en rebanadas', 'quant' => '1/4 de pieza', 'calories' => 80],
+                    ['id' => 4, 'desc' => 'Fruta fresca (por ejemplo, fresas o piña)', 'quant' => '1 taza', 'calories' => 50],
+                ]
+            ],
+            [
+                'name' => 'Colación Mañana',
+                'items' => [ // Colación 1
+                    ['id' => 1, 'desc' => 'Yogur natural sin azúcar', 'quant' => '1 envase', 'calories' => 100],
+                    ['id' => 2, 'desc' => 'Puñado de nueces', 'quant' => '30g', 'calories' => 200],
+                ]
+            ],
+            [
+                'name' => 'Comida',
+                'items' => [ // Comida
+                    ['id' => 1, 'desc' => 'Ensalada de quinoa con vegetales', 'quant' => '1 taza de quinoa cocida, verduras al gusto', 'calories' => 350],
+                    ['id' => 2, 'desc' => 'Pechuga de pollo a la parrilla', 'quant' => '150g', 'calories' => 250],
+                    ['id' => 3, 'desc' => 'Agua de limón sin azúcar', 'quant' => '1 vaso', 'calories' => 50],
+
+                ]
+            ],
+            [
+                'name' => 'Cena',
+                'items' => [ // Cena
+                    ['id' => 1, 'desc' => 'Filete de salmón al horno', 'quant' => '150g', 'calories' => 400],
+                    ['id' => 2, 'desc' => 'Espárragos al vapor', 'quant' => '1 taza', 'calories' => 30],
+                ]
+            ],
+            [
+                'name' => 'Colación Noche',
+                'items' => [ // Colación 2
+                    ['id' => 1, 'desc' => 'Yogur griego natural sin azúcar', 'quant' => '1 envase', 'calories' => 120],
+                    ['id' => 2, 'desc' => 'Rodajas de piña', 'quant' => '1 taza', 'calories' => 100],
+                ]
+            ],
+        ];
         
         // Menu 01
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 01',
+        //     'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu01_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 02
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 02',
+        //     'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu02_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 03
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 03',
+        //     'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu03_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 04
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 04',
+        //     'total_cal' => '1920', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu04_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 05
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 05',
+        //     'total_cal' => '1910', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu05_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 06
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 06',
+        //     'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu06_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // // Menu 07
+        // DB::table('recipes')->insert([
+        //     'name' => 'Menu 07',
+        //     'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
+        //     'group_id' => '1',
+        //     'tempos' => json_encode($menu07_g1),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
         DB::table('recipes')->insert([
             'name' => 'Menu 01',
-            'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu01),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 02
-        DB::table('recipes')->insert([
-            'name' => 'Menu 02',
-            'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu02),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 03
-        DB::table('recipes')->insert([
-            'name' => 'Menu 03',
-            'total_cal' => '1900', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu03),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 04
-        DB::table('recipes')->insert([
-            'name' => 'Menu 04',
-            'total_cal' => '1920', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu04),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 05
-        DB::table('recipes')->insert([
-            'name' => 'Menu 05',
-            'total_cal' => '1910', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu05),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 06
-        DB::table('recipes')->insert([
-            'name' => 'Menu 06',
-            'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu06),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Menu 07
-        DB::table('recipes')->insert([
-            'name' => 'Menu 07',
-            'total_cal' => '1880', // Este campo corresponde al total de la tabla de excel
-            'group_id' => '1',
-            'tempos' => json_encode($menu07),
+            'total_cal' => '1950', // Este campo corresponde al total de la tabla de excel
+            'group_id' => '2',
+            'tempos' => json_encode($menu01_g2),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

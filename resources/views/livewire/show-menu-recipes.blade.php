@@ -5,7 +5,7 @@
             class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
             <option value="">-- Seleccione una dieta de --</option>
             @foreach ($activityFactor as $key => $answer)
-                <option value="{{ $key }}">Hasta {{ $answer }} kcal</option>
+                <option value="{{ $key }}">de {{$answer - 399}} a {{ $answer }} kcal</option>
             @endforeach
         </select>
         @error('factor')
