@@ -6,7 +6,7 @@
                     <div class="flex flex-col w-full text-slate-200 border border-lime-400 rounded p-4">
                         <div class="flex flex-row mb-2">
                             <div class="flex w-1/2 justify-start">
-                                <p>Grupo {{ $recipe->group_id }} de menus</p>
+                                <p>Grupo {{ $recipe->group_id }} de menús</p>
                             </div>
                             <div class="flex w-1/2 justify-end pr-2">
                                 <p>hasta {{ $maxFactor }} kcal</p>
@@ -20,7 +20,7 @@
                     </div>
                 @empty
                     <p class="p-3 text-center text-sm text-gray-200">
-                        No existen menus para mostrar en este momento.
+                        No existen menús para mostrar en este momento.
                     </p>
                 @endforelse
             </div>
