@@ -2,22 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MedicalAppointment;
 use Carbon\Carbon;
 use App\Models\State;
 use Illuminate\Http\Request;
 use App\Models\MedicalRecord;
+use App\Models\MedicalAppointment;
 
 class MedicalRecordController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('medical_records.index');
-    }
-
     public $periodic_habits = [
         1 => 'Nunca',
         2 => 'Esporádicamente',
@@ -38,6 +30,15 @@ class MedicalRecordController extends Controller
         4 => 'Alto nivel (ejercicio intenso al menos 5 veces a la semana)',
         5 => 'Muy alto (ejercicio todos los días más de una vez)',
     ];
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return view('medical_records.index');
+    }
 
     public function changeAgeEvent($age)
     {

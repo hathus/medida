@@ -5,22 +5,22 @@
             <div class="md:flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- Peso --}}
                 <x-input-label for="weight" :value="__('Peso')" class="uppercase" />
-                <x-text-input id="weight" wire:model="weight" wire:model.live="weight" class="block mt-1 w-full" type="number" step="1"
-                    min="0" :value="old('weight')" placeholder="ejemplo: 55"
+                <x-text-input id="weight" wire:model="weight" wire:model.live="weight" class="block mt-1 w-full"
+                    type="number" step="1" min="0" :value="old('weight')" placeholder="ejemplo: 55"
                     wire:change="changeWeightEvent($event.target.value)" />
-                    @error('weight')
+                @error('weight')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
                 {{-- Talla o Altura --}}
                 <x-input-label for="size" :value="__('Talla/Estatura')" class="uppercase" />
-                <x-text-input id="size" wire:model="size" wire:model.live="size" class="block mt-1 w-full" type="number" step="0.01"
-                    min="0" :value="old('size')" placeholder="ejemplo: 1.55"
+                <x-text-input id="size" wire:model="size" wire:model.live="size" class="block mt-1 w-full"
+                    type="number" step="0.01" min="0" :value="old('size')" placeholder="ejemplo: 1.55"
                     wire:change="changeSizeEvent($event.target.value)" />
-                    @error('size')
+                @error('size')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -31,11 +31,12 @@
             {{-- IMC --}}
             <div class="md:flex-col md:w-1/2 mb-4">
                 <x-input-label for="imc" :value="__('IMC (Índice de Masa Corporal)')" class="uppercase" />
-                <x-text-input id="imc" wire:model="imc" wire:model.live="imc" class="block mt-1 w-full uppercase" type="text" :value="old('imc')"
-                    placeholder="en espera de evaluación" value="{{ $imc }}" disabled />
-                    @error('imc')
+                <x-text-input id="imc" wire:model="imc" wire:model.live="imc" class="block mt-1 w-full uppercase"
+                    type="text" :value="old('imc')" placeholder="en espera de evaluación" value="{{ $imc }}"
+                    disabled />
+                @error('imc')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
             {{-- Eval IMC --}}
             <div class="md:flex-col md:w-1/2">
@@ -46,18 +47,20 @@
                     $isSobrepeso = $eval_imc === 'Sobrepeso' ? true : false;
                     $isObesidad = $eval_imc === 'Obesidad' ? true : false;
                 @endphp
-                <x-text-input id="eval_imc"
-                    @class(['block', 'mt-1', 'w-full', 'uppercase', 
-                    '!text-blue-500' => $isBajoPeso, 
-                    '!text-lime-500' => $isNormal, 
+                <x-text-input id="eval_imc" @class([
+                    'block',
+                    'mt-1',
+                    'w-full',
+                    'uppercase',
+                    '!text-blue-500' => $isBajoPeso,
+                    '!text-lime-500' => $isNormal,
                     '!text-orange-500' => $isSobrepeso,
                     '!text-red-500' => $isObesidad,
-                    ])
-                    type="text" :value="old('eval_imc')"
+                ]) type="text" :value="old('eval_imc')"
                     placeholder="en espera de evaluación" value="{{ $eval_imc }}" disabled />
-                    @error('eval_imc')
+                @error('eval_imc')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -69,21 +72,23 @@
                 {{-- glucosa --}}
                 <x-input-label class="uppercase" for="glucose" :value="__('Nivel de Glucosa')" />
                 <x-text-input id="glucose" class="block mt-1 w-full uppercase" type="number" step="1"
-                    min="0" wire:model="glucose" wire:model.live="glucose" :value="old('glucose')" placeholder="ejemplo: 95"
-                    wire:change="changeGlucoseEvent($event.target.value)" />
-                    @error('glucose')
+                    min="0" wire:model="glucose" wire:model.live="glucose" :value="old('glucose')"
+                    placeholder="ejemplo: 95" wire:change="changeGlucoseEvent($event.target.value)" />
+                @error('glucose')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
 
             <div class="md:flex-col md:w-1/2">
                 {{-- glucosa evaluación --}}
                 <x-input-label class="uppercase" for="glucose_eval" :value="__('Evaluación de Glucosa')" />
-                <x-text-input id="glucose_eval" class="block mt-1 w-full uppercase {{$glucose_eval_color > 120 ? '!text-red-700' : '!text-lime-700'}}" type="text" :value="old('glucose_eval')"
-                    value="{{ $glucose_eval }}" disabled placeholder="En espera de evaluación" />
-                    @error('glucose_eval')
+                <x-text-input id="glucose_eval"
+                    class="block mt-1 w-full uppercase {{ $glucose_eval_color > 120 ? '!text-red-700' : '!text-lime-700' }}"
+                    type="text" :value="old('glucose_eval')" value="{{ $glucose_eval }}" disabled
+                    placeholder="En espera de evaluación" />
+                @error('glucose_eval')
                     <livewire:mostrar-alerta :message="$message" />
-                    @enderror
+                @enderror
             </div>
         </div>
     </div>
@@ -100,7 +105,7 @@
             @endforeach
         </select>
         @error('exercised')
-        <livewire:mostrar-alerta :message="$message" />
+            <livewire:mostrar-alerta :message="$message" />
         @enderror
     </div>
 
@@ -142,7 +147,7 @@
                     @endforeach
                 </select>
                 @error('fast_food')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
@@ -155,7 +160,7 @@
                     @endforeach
                 </select>
                 @error('smoking')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -174,7 +179,7 @@
                     @endforeach
                 </select>
                 @error('alcoholism')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
             <div class="md:flex-col md:w-1/2">
@@ -187,7 +192,7 @@
                     @endforeach
                 </select>
                 @error('drugs')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
         </div>
@@ -200,8 +205,7 @@
                 <x-input-label class="uppercase" for="body_temp" :value="__('Temperatura Corporal')" />
                 <x-text-input id="body_temp" class="block mt-1 w-full" type="number" step="0.1"
                     wire:model="body_temp" wire:model.live="body_temp" :value="old('body_temp')"
-                    placeholder="Temperatura Corporal"
-                    wire:change="changeBodyTempEvent($event.target.value)" />
+                    placeholder="Temperatura Corporal" wire:change="changeBodyTempEvent($event.target.value)" />
                 @error('body_temp')
                     <livewire:mostrar-alerta :message="$message" />
                 @enderror
@@ -217,17 +221,20 @@
                     $moderada = $temp >= 38.6 && $temp <= 39 ? true : false;
                     $alta = $temp >= 39.1 ? true : false;
                 @endphp
-                <x-text-input id="eval_body_temp"
-                    @class(['block', 'mt-1', 'w-full', 'uppercase', 'bold',
-                        '!text-blue-500' => $baja,
-                        '!text-lime-500' => $normal,
-                        '!text-yellow-600' => $febricula,
-                        '!text-pink-600' => $leve,
-                        '!text-orange-600' => $moderada,
-                        '!text-red-600' => $alta,
-                    ]) 
-                    type="text" :value="old('eval_body_temp')" value="{{ $eval_body_temp }}" disabled
-                    placeholder="En espera de evaluación" />
+                <x-text-input id="eval_body_temp" @class([
+                    'block',
+                    'mt-1',
+                    'w-full',
+                    'uppercase',
+                    'bold',
+                    '!text-blue-500' => $baja,
+                    '!text-lime-500' => $normal,
+                    '!text-yellow-600' => $febricula,
+                    '!text-pink-600' => $leve,
+                    '!text-orange-600' => $moderada,
+                    '!text-red-600' => $alta,
+                ]) type="text" :value="old('eval_body_temp')"
+                    value="{{ $eval_body_temp }}" disabled placeholder="En espera de evaluación" />
             </div>
         </div>
     </div>
@@ -247,17 +254,20 @@
             </div>
             <div class="md:flex-col md:w-1/2 mb-4">
                 <x-input-label class="uppercase" for="eval_blood_press" :value="__('Evaluación Presión Arterial')" />
-                <x-text-input id="eval_blood_press"
-                    @class(['block', 'mt-1', 'w-full', 'uppercase', 'bold',
-                        '!text-blue-500'    => $blue,
-                        '!text-lime-500'    => $lime,
-                        '!text-yellow-600'  => $yellow,
-                        '!text-pink-600'    => $pink,
-                        '!text-orange-600'  => $orange,
-                        '!text-red-600'     => $red,
-                    ]) 
-                    type="text" :value="old('eval_blood_press')" value="{{ $eval_blood_press }}" disabled
-                    placeholder="En espera de evaluación" />
+                <x-text-input id="eval_blood_press" @class([
+                    'block',
+                    'mt-1',
+                    'w-full',
+                    'uppercase',
+                    'bold',
+                    '!text-blue-500' => $blue,
+                    '!text-lime-500' => $lime,
+                    '!text-yellow-600' => $yellow,
+                    '!text-pink-600' => $pink,
+                    '!text-orange-600' => $orange,
+                    '!text-red-600' => $red,
+                ]) type="text" :value="old('eval_blood_press')"
+                    value="{{ $eval_blood_press }}" disabled placeholder="En espera de evaluación" />
             </div>
         </div>
     </div>
@@ -265,31 +275,35 @@
     {{-- Alergias --}}
     <div class="mt-4">
         <x-input-label class="uppercase" for="allergies" :value="__('Alergias')" />
-        <x-text-input id="allergies" class="block mt-1 w-full" type="text" wire:model="allergies" wire:model.live="allergies" :value="old('allergies')"
-            placeholder="Alergias del paciente" />
-            @error('allergies')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
+        <x-text-input id="allergies" class="block mt-1 w-full" type="text" wire:model="allergies"
+            wire:model.live="allergies" :value="old('allergies')" placeholder="Alergias del paciente" />
+        @error('allergies')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
     </div>
 
     {{-- Diagnostico --}}
     <div class="mt-4">
         <x-input-label class="uppercase" for="diagnostic" :value="__('Diagnostico')" />
-        <textarea wire:model="diagnostic" wire:model.live="diagnostic" id="diagnostic" cols="15" rows="5" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm" placeholder="Descripción del diagnostico realizado al paciente"></textarea>
+        <textarea wire:model="diagnostic" wire:model.live="diagnostic" id="diagnostic" cols="15" rows="5"
+            class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm"
+            placeholder="Descripción del diagnostico realizado al paciente"></textarea>
 
         @error('diagnostic')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
     </div>
 
     {{-- Tratamiento --}}
     <div class="mt-4">
         <x-input-label class="uppercase" for="treatment" :value="__('Tratamiento')" />
-        <textarea wire:model="treatment" wire:model.live="treatment" id="treatment" cols="15" rows="5" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm" placeholder="Descripción del tratamiento recomendado al paciente"></textarea>
+        <textarea wire:model="treatment" wire:model.live="treatment" id="treatment" cols="15" rows="5"
+            class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm"
+            placeholder="Descripción del tratamiento recomendado al paciente"></textarea>
 
         @error('treatment')
-                <livewire:mostrar-alerta :message="$message" />
-            @enderror
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
     </div>
 
     <x-primary-button class="w-full justify-center mt-4">
