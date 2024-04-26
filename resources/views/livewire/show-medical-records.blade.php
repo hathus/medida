@@ -18,8 +18,8 @@
                             </span>
                         </p>
                         <p>Glucosa: 
-                            <span class="text-sm font-bold flex justify-start items-center {{ $expediente->glucose <= 120 ? 'text-lime-600' : 'text-red-600' }}">
-                                @if ($expediente->glucose <= 120)
+                            <span class="text-sm font-bold flex justify-start items-center {{ $expediente->consultas->first()->glucose <= 120 ? 'text-lime-600' : 'text-red-600' }}">
+                                @if ($expediente->consultas->first()->glucose <= 120)
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                         class="w-6 h-6 text-lime-400">
                                         <path stroke-linecap="round" stroke-linejoin="round"
