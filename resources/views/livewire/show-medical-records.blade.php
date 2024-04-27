@@ -1,8 +1,8 @@
 <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
+        <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
             @forelse ($expedientes as $expediente)
-                <div class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
+                <div class="p-6 text-gray-900 dark:text-slate-200 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
                         <a href="{{route('mostrar-expediente', $expediente->id)}}" class="font-bold">
                             {{ $expediente->name }}
@@ -82,7 +82,7 @@
 
                     <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
                         <a href="{{ route('consultas', $expediente->id) }}"
-                            class="py-2 px-4 rounded border border-amber-700 text-gray-100 hover:bg-amber-700  text-xs font-bold uppercase flex items-center justify-center">
+                            class="py-2 px-4 rounded border border-amber-700 dark:text-slate-200 hover:bg-amber-700  text-xs font-bold uppercase flex items-center justify-center hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                 class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -90,7 +90,7 @@
                             </svg>
                             Consultas Medicas
                         </a>
-                        <a href="{{route('mostrar-expediente', $expediente->id)}}" class="py-2 px-4 rounded border border-green-700 text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center">
+                        <a href="{{route('mostrar-expediente', $expediente->id)}}" class="py-2 px-4 rounded border border-green-700 dark:text-slate-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                 class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -99,7 +99,7 @@
                             </svg>
                             Mostrar
                         </a>
-                        <a href="{{ route('editar-expediente', $expediente->id) }}" class="border border-blue-700 py-2 px-4 rounded text-gray-100 hover:bg-blue-700 text-xs font-bold uppercase text-center flex items-center justify-center">
+                        <a href="{{ route('editar-expediente', $expediente->id) }}" class="border border-blue-700 py-2 px-4 rounded dark:text-slate-100 hover:bg-blue-700 text-xs font-bold uppercase text-center flex items-center justify-center hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                 class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -107,7 +107,7 @@
                             </svg>
                             Editar
                         </a>
-                        <button class="border border-red-700 py-2 px-4 rounded text-gray-100 hover:bg-red-700 text-xs font-bold uppercase text-center flex items-center justify-center" wire:click="$dispatch('deleteAlertMedicalRecord', {{ $expediente->id }})">
+                        <button class="border border-red-700 py-2 px-4 rounded dark:text-slate-100 hover:bg-red-700 text-xs font-bold uppercase text-center flex items-center justify-center hover:text-white" wire:click="$dispatch('deleteAlertMedicalRecord', {{ $expediente->id }})">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                 class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"

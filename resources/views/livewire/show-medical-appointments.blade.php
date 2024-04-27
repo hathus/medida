@@ -1,11 +1,11 @@
 <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
+        <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
             @forelse ($consultas as $consulta)
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
-                        <p class="text-gray-200">Fecha de la Consulta:
+                        <p >Fecha de la Consulta:
                             {{ \Carbon\Carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
                         </p>
                         @php
@@ -116,7 +116,7 @@
 
                     <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
                         <a href="{{route('mostrar-consulta', $consulta->id)}}"
-                            class="py-2 px-4 rounded border border-green-700 text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center">
+                            class="py-2 px-4 rounded border border-green-700 dark:text-gray-100 hover:bg-green-700  text-xs font-bold uppercase flex items-center justify-center hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -133,7 +133,7 @@
                         @endphp
                         @if ($now === $appointment)
                             <a href="{{ route('editar-consulta', $consulta->id) }}"
-                                class="border border-blue-700 py-2 px-4 rounded text-gray-100 hover:bg-blue-700 text-xs font-bold uppercase text-center flex items-center justify-center">
+                                class="border border-blue-700 py-2 px-4 rounded dark:text-gray-100 hover:bg-blue-700 text-xs font-bold uppercase text-center flex items-center justify-center hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-1">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -143,7 +143,7 @@
                             </a>
                         @endif
                         <button
-                            class="border border-red-700 py-2 px-4 rounded text-gray-100 hover:bg-red-700 text-xs font-bold uppercase text-center flex items-center justify-center"
+                            class="border border-red-700 py-2 px-4 rounded dark:text-gray-100 hover:bg-red-700 text-xs font-bold uppercase text-center flex items-center justify-center hover:text-white"
                             wire:click="$dispatch('deleteAlertMedicalApp', {{ $consulta->id }})">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-1">

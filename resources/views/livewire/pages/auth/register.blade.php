@@ -62,7 +62,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password"
                     name="password" required autocomplete="new-password" />
 
-                <i id="togglePassword" class="text-white absolute w-10 cursor-pointer">
+                <i id="togglePassword" class="dark:text-white absolute w-10 cursor-pointer">
                     <svg id="open-eye" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -90,7 +90,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
                     type="password" name="password_confirmation" required autocomplete="new-password" />
 
-                <i id="togglePasswordConfirm" class="text-white absolute w-10 cursor-pointer">
+                <i id="togglePasswordConfirm" class="dark:text-white bold absolute w-10 cursor-pointer">
                     <svg id="open-eye" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
