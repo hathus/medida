@@ -22,7 +22,7 @@ class RecipeController extends Controller
             ->whereBetween('total_cal', [$minFactor, $maxFactor])
             ->get();
 
-        return view('livewire.recipes.show', [
+        return view('recipes.show', [
             'recipes' => $recipes,
             'group_id' => $groupId,
             'max_factor' => $maxFactor,

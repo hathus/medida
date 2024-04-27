@@ -27,9 +27,9 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('medical_appointments/{medical_record}/show', [MedicalAppointmentController::class, 'show'])->name('mostrar-consulta');
 
     // Recetas/Menus
-    Route::get('recipes/index', [RecipeController::class, 'index'])->name('recetas');
+    //Route::get('recipes/index', [RecipeController::class, 'index'])->name('recetas');
+    Route::view('recetas', 'recipes.index')->name('recetas');
     Route::get('recipes/{group_id}/{max_factor}/show', [RecipeController::class, 'show'])->name('mostrar-recetas');
-
 });
 
 Route::view('profile', 'profile')
