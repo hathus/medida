@@ -1,3 +1,4 @@
+@inject('carbon', 'Carbon\Carbon')
 <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
@@ -6,7 +7,7 @@
                     class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
                         <p >Fecha de la Consulta:
-                            {{ \Carbon\Carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
+                            {{ $carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
                         </p>
                         @php
                             $temp = $consulta->body_temp;
@@ -128,8 +129,8 @@
                         </a>
                         {{-- El boton se mostrara solamente si la consulta es igual al día en que se creó --}}
                         @php
-                            $now = \Carbon\Carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
-                            $appointment = \Carbon\Carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
+                            $now = $carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
+                            $appointment = $carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
                         @endphp
                         @if ($now === $appointment)
                             <a href="{{ route('editar-consulta', $consulta->id) }}"

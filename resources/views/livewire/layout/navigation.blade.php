@@ -37,6 +37,9 @@ new class extends Component {
                     <x-nav-link :href="route('expedientes')" :active="request()->routeIs('expedientes')" wire:navigate>
                         {{ __('nav-dashboard.medical_records') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('valid')" :active="request()->routeIs('valid')" wire:navigate>
+                        {{ __('Validado Por') }}
+                    </x-nav-link>
                 </div>
             </div>
 

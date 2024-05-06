@@ -1,5 +1,5 @@
 <?php
 
     return [
-        'header_title' => 'Expedientes Medicos',
+        'header_title' => 'Expedientes Médicos',
     ];
