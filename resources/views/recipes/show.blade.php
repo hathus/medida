@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex w-full items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex w-1/2">
+            <h2 class="font-semibold sm:text-xl text-gray-800 dark:text-gray-200 leading-tight flex w-1/2">
                 {{ __('Menús del Grupo ') }} {{ $group_id }} de hasta {{ $max_factor }} kcal
             </h2>
 

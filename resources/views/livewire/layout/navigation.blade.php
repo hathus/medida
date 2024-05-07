@@ -23,7 +23,7 @@ new class extends Component {
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('welcome') }}" wire:navigate>
+                    <a href="{{ route('expedientes') }}" wire:navigate>
                         {{-- <x-application-logo class="block w-auto h-9 text-gray-800 fill-current dark:text-gray-200" /> --}}
                         <img src="/img/logo.png" alt="{{$_ENV['APP_NAME']}}" width="125px" />
                     </a>
