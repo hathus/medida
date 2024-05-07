@@ -97,11 +97,14 @@ new class extends Component {
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('nav-dashboard.dashboard') }}
+            <x-responsive-nav-link :href="route('recetas')" :active="request()->routeIs('recetas')" wire:navigate>
+                {{ __('Menús') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('expedientes')" :active="request()->routeIs('expedientes')" wire:navigate class="{{ Request::routeIs('nuevo-expediente') ? 'active' : '' }}">
                 {{ __('nav-dashboard.medical_records') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('valid')" :active="request()->routeIs('valid')" wire:navigate>
+                {{ __('Validado Por') }}
             </x-responsive-nav-link>
         </div>
 

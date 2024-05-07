@@ -3,9 +3,9 @@
         <h2 class="font-semibold text-xl dark:text-gray-200 leading-tight">
             {{ __('medical_records_index.header_title') }}
         </h2>
-        <div class="flex justify-between items-center dark:text-slate-200">
+        <div class="flex justify-between items-center dark:text-slate-200 w-full flex-col sm:flex-row">
             <a href="{{ route('nuevo-expediente') }}"
-                class="border border-lime-500 rounded p-2 flex md:w-1/6 my-2 justify-center items-center text-sm uppercase font-bold hover:bg-lime-600  transition ease-in-out duration-150 hover:text-white">
+                class="border border-lime-500 rounded p-2 flex md:w-96 w-full my-2 justify-center items-center text-sm uppercase font-bold hover:bg-lime-600  transition ease-in-out duration-150 hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 mx-1">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -14,7 +14,9 @@
                 {{ __('Nuevo Expediente') }}
             </a>
 
-            <livewire:medical-records-filter />
+            <div class="w-full flex items-center justify-center sm:justify-end ">
+                <livewire:medical-records-filter />
+            </div>
         </div>
     </x-slot>
 
