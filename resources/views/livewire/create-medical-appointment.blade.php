@@ -309,4 +309,7 @@
     <x-primary-button class="w-full justify-center mt-4">
         Registrar Consulta Medica
     </x-primary-button>
+    <x-secondary-button class="w-full justify-center mt-4" wire:click='cancel()'>
+        Cancelar Registro
+    </x-secondary-button>
 </form>

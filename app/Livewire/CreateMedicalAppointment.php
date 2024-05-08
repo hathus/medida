@@ -128,6 +128,11 @@ class CreateMedicalAppointment extends Component
         return view('livewire.create-medical-appointment');
     }
 
+    public function cancel()
+    {
+        return redirect()->route('consultas', $this->medical_record_id);
+    }
+
     public function createMedicalAppointment()
     {
         $datos_validados = $this->validate();

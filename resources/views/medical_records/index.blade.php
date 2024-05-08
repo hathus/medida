@@ -14,7 +14,7 @@
                 {{ __('Nuevo Expediente') }}
             </a>
 
-            <div class="w-full flex items-center justify-center sm:justify-end ">
+            <div class="w-full flex items-center justify-center sm:justify-end">
                 <livewire:medical-records-filter />
             </div>
         </div>

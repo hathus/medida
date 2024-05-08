@@ -42,7 +42,9 @@
                             <label for="gender">Edad</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
-                                type="text" value="{{ floor(Carbon\Carbon::parse($medApp->expediente->age)->diffInYears(Carbon\Carbon::now())) }} años" disabled>
+                                type="text"
+                                value="{{ floor(Carbon\Carbon::parse($medApp->expediente->age)->diffInYears(Carbon\Carbon::now())) }} años"
+                                disabled>
                         </div>
                     </div>
 
@@ -150,7 +152,7 @@
                             <label for="diagnostic">Diagnostico</label>
                             <textarea
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
-                                name="diagnostic" id="diagnostic" disabled>{{$medApp->diagnostic}}</textarea>
+                                name="diagnostic" id="diagnostic" disabled>{{ $medApp->diagnostic }}</textarea>
                         </div>
                     </div>
 
@@ -160,16 +162,20 @@
                             <label for="treatment">Tratamiento</label>
                             <textarea
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
-                                name="treatment" id="treatment" disabled>{{$medApp->treatment}}</textarea>
+                                name="treatment" id="treatment" disabled>{{ $medApp->treatment }}</textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="mt-2 sm:flex sm:justify-end sm:items-center p-3 sm:p-0">
                 <button onclick="window.print()"
-                    class="border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 print:hidden w-full sm:w-1/4 hover:text-white">
+                    class="mt-2 border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 print:hidden w-full sm:w-1/4 hover:text-white">
                     Imprimir Consulta
                 </button>
+                <a href="{{route('consultas', $medApp->expediente->id)}}"
+                    class="sm:ml-2 mt-2 border border-gray-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-gray-700 print:hidden w-full sm:w-1/4 hover:text-white text-center">
+                    regresar
+                </a>
             </div>
         </div>
     </div>

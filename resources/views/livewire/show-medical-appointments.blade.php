@@ -1,5 +1,5 @@
 @inject('carbon', 'Carbon\Carbon')
-<div class="py-6">
+<div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
             @forelse ($consultas as $consulta)

@@ -6,19 +6,33 @@
         </h2>
         @php
             $now = \Carbon\Carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
-            $appointment = \Carbon\Carbon::parse($consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');    
+            $appointment = \Carbon\Carbon::parse($consultas->last()->created_at)
+                ->locale('es')
+                ->setTimezone('America/Mexico_City')
+                ->format('d m Y');
         @endphp
-        @if ($appointment !== $now)
-            <a href="{{ route('nueva-consulta', $id) }}"
-                class="border border-lime-500 rounded p-2 flex md:w-1/6 my-2 justify-center items-center dark:text-gray-100 text-sm uppercase font-bold hover:bg-lime-700  transition ease-in-out duration-150 hover:text-white">
+        <div class="mt-2 sm:flex sm:justify-start sm:items-center p-2 sm:p-0">
+            @if ($appointment !== $now)
+                <a href="{{ route('nueva-consulta', $id) }}"
+                    class="mt-2 sm:mr-2 border border-lime-500 rounded p-2 flex sm:w-1/4 justify-center items-center dark:text-gray-100 text-sm uppercase font-bold hover:bg-lime-700  transition ease-in-out duration-150 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-4 h-5 mx-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                    </svg>
+                    {{ __('Nueva Consulta') }}
+                </a>
+            @endif
+            <a href="{{ route('expedientes') }}"
+                class="mt-2 border border-gray-500 rounded p-2 flex sm:w-1/4 justify-center items-center dark:text-gray-100 text-sm uppercase font-bold hover:bg-gray-700  transition ease-in-out duration-150 hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6 mx-1">
+                    stroke="currentColor" class="w-4 h-4 mx-1">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
                 </svg>
-                {{ __('Nueva Consulta') }}
+                regresar
             </a>
-        @endif
+        </div>
     </x-slot>
 
     <div class="py-3">

@@ -100,6 +100,11 @@ class CreateMedicalRecord extends Component
     public $drugs;
 
 
+    public function cancel()
+    {
+        return redirect()->route('expedientes');
+    }
+
     public function createMedicalRecord()
     {
         // Validamos los datos del formulario

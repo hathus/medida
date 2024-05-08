@@ -178,9 +178,13 @@
                 </div>
             </div>
             <div class="mt-2 sm:flex sm:justify-end sm:items-center p-3 sm:p-0">
-                <button onclick="window.print()" class="border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 hover:text-white print:hidden w-full sm:w-1/4">
+                <button onclick="window.print()" class="mt-2 border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 hover:text-white print:hidden w-full sm:w-1/4">
                     Imprimir Expediente
                 </button>
+                <a href="{{route('expedientes')}}"
+                    class="sm:ml-2 mt-2 border border-gray-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-gray-700 print:hidden w-full sm:w-1/4 hover:text-white text-center">
+                    regresar
+                </a>
             </div>
         </div>
     </div>
