@@ -30,7 +30,7 @@
                 class="grid items-center justify-between w-full grid-cols-2 gap-2 p-5 py-8 lg:grid-cols-3 bg-lime-500">
                 <div class="flex text-gray-700 font-bold lg:justify-center lg:col-start-2">
                     <a href="/" class="flex items-center flex-col md:flex-row">
-                        <img src="/img/logo.png" alt="{{ $_ENV['APP_NAME'] }}" width="180px">
+                        <img src="/img/logo.png" alt="{{ $_ENV['APP_NAME'] }}" width="160px">
                         {{-- <p class="bold md:text-2xl"></p> --}}
                     </a>
                 </div>
@@ -40,6 +40,16 @@
             </header>
             <main class="mt-2">
                 {{-- Poner el contenido informativo aquí --}}
+                <div class="flex justify-center items-center flex-col sm:flex-row">
+                    <div class="w-1/2 sm:flex justify-center">
+                        <img class="" src="img/xcion.png" alt="ruta web" width="200">
+                    </div>
+                    <div class="w-1/2">
+                        <p class="text-gray-700 text-2xl">
+                            Ingresa a nuestra web escaneando el código QR
+                        </p>
+                    </div>
+                </div>
             </main>
 
             <footer class="w-full py-10 text-sm text-center text-black dark:text-gray/70 bg-lime-500">
