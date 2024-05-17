@@ -10,7 +10,9 @@
                             {{ $expediente->name }}
                         </a>
                         <p>Última Consulta:
-                            {{ $carbon::parse($expediente->consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
+                            {{-- {{ $carbon::parse($expediente->consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }} --}}
+
+                            {{$expediente->consultas->last()}}
                         </p>
                         <p>{{ $carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p>
                         <p>
