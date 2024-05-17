@@ -1,4 +1,4 @@
-@inject('carbon', 'Carbon\Carbon')
+@inject('carbon', '\Carbon\Carbon')
 <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-lime-300">
@@ -10,15 +10,13 @@
                             {{ $expediente->name }}
                         </a>
                         <p>Última Consulta:
-                            {{-- {{ $carbon::parse($expediente->consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }} --}}
-
-                            {{$expediente->consultas->last()}}
+                            {{ $carbon::parse($expediente->consultas->last()->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
                         </p>
-                        {{-- <p>{{ $carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p> --}}
+                        <p>{{ $carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p>
                         <p>
                             Edad:
                             <span class="text-sm font-bold">
-                                {{-- {{ floor($carbon::parse($expediente->age)->diffInYears($carbon::now())) }} --}}
+                                {{ floor($carbon::parse($expediente->age)->diffInYears($carbon::now())) }}
                                 años
                             </span>
                         </p>
