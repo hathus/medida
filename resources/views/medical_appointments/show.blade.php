@@ -169,11 +169,11 @@
             </div>
             <div class="mt-2 sm:flex sm:justify-end sm:items-center p-3 sm:p-0">
                 <button onclick="window.print()"
-                    class="mt-2 border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 print:hidden w-full sm:w-1/4 hover:text-white">
+                    class="mt-2 border border-lime-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-lime-700 print:hidden w-full sm:w-1/4 hover:text-white sm:mb-0 mb-2">
                     Imprimir Consulta
                 </button>
                 <a href="{{route('consultas', $medApp->expediente->id)}}"
-                    class="sm:ml-2 mt-2 border border-gray-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-gray-700 print:hidden w-full sm:w-1/4 hover:text-white text-center">
+                    class="sm:ml-2 mt-2 border border-gray-300 p-2 rounded dark:text-gray-100 uppercase text-sm hover:bg-gray-700 print:hidden w-full sm:w-1/4 hover:text-white text-center flex justify-center items-center">
                     regresar
                 </a>
             </div>
