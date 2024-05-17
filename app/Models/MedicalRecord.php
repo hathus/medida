@@ -10,7 +10,11 @@ class MedicalRecord extends Model
 {
     use HasFactory;
 
-    protected $casts = ['age' => 'date'];
+    protected $casts = [
+        'age' => 'date',
+        'created_at' => 'date',
+        'updated_at' => 'date',
+    ];
 
     // Valores para el registro medico
     protected $fillable = [

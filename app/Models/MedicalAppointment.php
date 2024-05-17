@@ -10,6 +10,11 @@ class MedicalAppointment extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'created_at' => 'date',
+        'updated_at' => 'date',
+    ];
+
     protected $fillable = [
         'weight',
         'size',

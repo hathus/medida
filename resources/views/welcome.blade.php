@@ -40,16 +40,26 @@
             </header>
             <main class="mt-2">
                 {{-- Poner el contenido informativo aquí --}}
-                <div class="flex justify-center items-center flex-col sm:flex-row">
-                    <div class="w-1/2 sm:flex justify-center">
-                        <img class="" src="img/xcion.png" alt="ruta web" width="200">
-                    </div>
-                    <div class="w-1/2">
-                        <p class="text-gray-700 text-2xl">
+                <div class="grid grid-cols-2">
+                    <div></div>
+                    <div class="flex flex-col items-center">
+                        <img src="img/xcion.png" alt="ruta web" width="200">
+                        <p class="text-gray-700 text-2xl text-center">
                             Ingresa a nuestra web escaneando el código QR
                         </p>
                     </div>
                 </div>
+                {{-- <div class="flex justify-center items-center flex-col sm:flex-row">
+                    <div class="w-1/2 sm:flex justify-center">
+                        
+                    </div>
+                    <div class="w-1/2">
+                        <p class="text-gray-700 text-2xl">
+                            <img class="" src="img/xcion.png" alt="ruta web" width="200">
+                            Ingresa a nuestra web escaneando el código QR
+                        </p>
+                    </div>
+                </div> --}}
             </main>
 
             <footer class="w-full py-10 text-sm text-center text-black dark:text-gray/70 bg-lime-500">
