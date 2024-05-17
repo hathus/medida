@@ -32,7 +32,7 @@ class Recipes3400kSeeder extends Seeder
                 'name' => 'Comida',
                 'items' => [ // Comida
                     ['id' => 1, 'desc' => 'Tacos de pollo a la parrilla con guacamole', 'quant' => '3 tacos de pollo, guacamole al gusto', 'calories' => 700],
-                    ['id' => 2, 'desc' => 'Agua de limón sin azúcar', 'quant' => '1 vaso', 'calories' => 50],,
+                    ['id' => 2, 'desc' => 'Agua de limón sin azúcar', 'quant' => '1 vaso', 'calories' => 50],
 
                 ]
             ],
