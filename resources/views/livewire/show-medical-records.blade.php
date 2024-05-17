@@ -14,11 +14,11 @@
 
                             {{$expediente->consultas->last()}}
                         </p>
-                        <p>{{ $carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p>
+                        {{-- <p>{{ $carbon::parse($expediente->consultas->last()->created_at)->diffForHumans() }}</p> --}}
                         <p>
                             Edad:
                             <span class="text-sm font-bold">
-                                {{ floor($carbon::parse($expediente->age)->diffInYears($carbon::now())) }}
+                                {{-- {{ floor($carbon::parse($expediente->age)->diffInYears($carbon::now())) }} --}}
                                 años
                             </span>
                         </p>
