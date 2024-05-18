@@ -30,6 +30,7 @@ Route::middleware('auth', 'verified')->group(function () {
     //Route::get('recipes/index', [RecipeController::class, 'index'])->name('recetas');
     Route::view('recetas', 'recipes.index')->name('recetas');
     Route::get('recipes/{group_id}/{max_factor}/show', [RecipeController::class, 'show'])->name('mostrar-recetas');
+    Route::get('recipes/{category_id}/complements', [RecipeController::class, 'complements'])->name('complementos');
 
     Route::view('valid', 'valid.index')->name('valid');
 });

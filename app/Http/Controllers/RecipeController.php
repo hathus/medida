@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use App\Models\Category;
-use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
@@ -30,6 +28,11 @@ class RecipeController extends Controller
     public function index()
     {
         return view('livewire.recipes.index');
+    }
+
+    public function complements($categoryId)
+    {
+        return view('recipes.complements');
     }
 
     public function show($groupId, $maxFactor)
