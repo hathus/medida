@@ -24,7 +24,7 @@
             <div class="flex flex-col gap-4 content-center p-2 mt-4">
                 @forelse ($recipes as $recipe)
                     <div
-                        class="flex flex-col w-full dark:text-slate-200 border border-lime-400 rounded p-1 print:border-white print:text-sm">
+                        class="flex flex-col w-full dark:text-slate-200 border border-lime-400 rounded p-1 print:border-white print:text-sm ">
                         <div class="flex flex-row mt-2 mb-2">
                             <div class="flex w-1/2 justify-start pl-2">
                                 <p>{{ $recipe->name }}</p>
@@ -62,13 +62,13 @@
                                     </div>
                                     @foreach ($tempo->items as $item)
                                         <div class="flex w-full">
-                                            <div class="p-2 border-t flex w-3/6 justify-star">
+                                            <div class="p-2 border-t flex print:p-0 w-3/6 justify-star">
                                                 {{ $item->desc }}
                                             </div>
-                                            <div class="p-2 border-t flex w-2/6 justify-star">
+                                            <div class="p-2 border-t flex print:p-0 w-2/6 justify-star">
                                                 {{ $item->quant }}
                                             </div>
-                                            <div class="p-2 border-t flex w-1/6 justify-end">
+                                            <div class="p-2 border-t flex print:p-0 w-1/6 justify-end">
                                                 {{ $item->calories }} kcal
                                             </div>
                                         </div>

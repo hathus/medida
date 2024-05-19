@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FoodComplement;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
@@ -23,6 +24,12 @@ class RecipeController extends Controller
         14 => '6200',
     ];
 
+    public $complementsMenu = [
+        1 => 'Alimentos',
+        2 => 'Agua',
+        3 => 'Té',
+    ];
+
     public $maxFactor;
     
     public function index()
@@ -32,7 +39,12 @@ class RecipeController extends Controller
 
     public function complements($categoryId)
     {
-        return view('recipes.complements');
+        $complements  = FoodComplement::where('category', '=', $categoryId)->get();
+        
+        return view('recipes.complements', [
+            'complements' => $complements,
+            'category' => $this->complementsMenu[$categoryId],
+        ]);
     }
 
     public function show($groupId, $maxFactor)
