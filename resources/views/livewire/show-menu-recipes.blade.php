@@ -1,6 +1,6 @@
 <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-3 justify-end">
     <div class="justify-stretch mb-0">
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid sm:grid-cols-2 gap-2">
             <div>
                 <x-input-label class="uppercase" for="factor" :value="__('Consumo Calórico')" />
                 <select id="factor" wire:model="factor" wire:model.live="factor" wire:change='changeFactor()'
