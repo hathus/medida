@@ -97,8 +97,8 @@
                                     var opinion = {{ Js::from($alfonso_op) }};
                                     break;
                                 default:
-                                    var title = "No existe un titulo aun";
-                                    var opinion = "No existe una opinion aun";
+                                    var title = "No existe un título aún";
+                                    var opinion = "No existe una opinión aún";
                                     break
                             }
 
