@@ -11,7 +11,7 @@ class MedicalAppointment extends Model
     use HasFactory;
 
     protected $casts = [
-        'created_at' => 'date',
+        'created_at' => 'datetime',
         'updated_at' => 'date',
     ];
 
