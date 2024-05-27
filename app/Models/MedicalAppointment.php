@@ -12,7 +12,7 @@ class MedicalAppointment extends Model
 
     protected $casts = [
         'created_at' => 'datetime',
-        'updated_at' => 'date',
+        'updated_at' => 'datetime',
     ];
 
     protected $fillable = [
