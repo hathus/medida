@@ -179,6 +179,11 @@ class EditMedicalRecord extends Component
         return redirect()->route('expedientes');
     }
 
+    public function cancel()
+    {
+        return redirect()->route('expedientes');
+    }
+
     // evento que cambia el genero
     public function changeGender()
     {

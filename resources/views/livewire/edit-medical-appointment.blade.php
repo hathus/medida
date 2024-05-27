@@ -305,4 +305,7 @@
     <x-primary-button class="justify-center mt-4 w-full">
         Actualizar Consulta Medica
     </x-primary-button>
+    <x-secondary-button class="w-full justify-center mt-4" wire:click='cancel()'>
+        Cancelar Actualización
+    </x-secondary-button>
 </form>

@@ -35,8 +35,7 @@
             <div class="flex-col md:w-1/2 justify-stretch mb-4">
                 {{-- genero de nacimiento --}}
                 <x-input-label class="uppercase" for="gender" :value="__('Genero de Nacimiento')" />
-                <select id="gender" wire:model="gender" wire:model.live="gender"
-                wire:change='changeGender()'
+                <select id="gender" wire:model="gender" wire:model.live="gender" wire:change='changeGender()'
                     class="block mt-1 w-full uppercase border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm">
                     <option value="">-- Seleccione un Genero --</option>
                     @foreach ($gender_list as $key => $gender)
@@ -307,4 +306,7 @@
         <x-primary-button class="w-full justify-center mt-4">
             Actualizar Expediente
         </x-primary-button>
+        <x-secondary-button class="w-full justify-center mt-4" wire:click='cancel()'>
+            Cancelar Actualización
+        </x-secondary-button>
 </form>

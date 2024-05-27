@@ -7,8 +7,6 @@
         @php
             $now = \Carbon\Carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
             $appointment = \Carbon\Carbon::parse($consultas->last()->created_at)
-                ->locale('es')
-                ->setTimezone('America/Mexico_City')
                 ->format('d m Y');
         @endphp
         <div class="mt-2 sm:flex sm:justify-start sm:items-center p-2 sm:p-0">

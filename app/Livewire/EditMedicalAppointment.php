@@ -180,6 +180,11 @@ class EditMedicalAppointment extends Component
         return redirect()->route('consultas', $consulta->medical_record_id);
     }
 
+    public function cancel()
+    {
+        return redirect()->route('consultas', $this->consulta->medical_record_id);
+    }
+
     // evento que cambia el genero
     public function changeGender()
     {

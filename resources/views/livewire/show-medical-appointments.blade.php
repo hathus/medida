@@ -7,7 +7,7 @@
                     class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border border-lime-300">
                     <div class="space-y-3 rounded-lg">
                         <p>Fecha de la Consulta:
-                            {{ $carbon::parse($consulta->created_at)->locale('es')->setTimezone('America/Mexico_City')->translatedFormat('l j \de F \de Y') }}
+                            {{ $carbon::parse($consulta->created_at)->translatedFormat('l j \de F \de Y') }}
                         </p>
                         @php
                             $temp = $consulta->body_temp;
@@ -144,11 +144,9 @@
                         </a>
                         {{-- El boton se mostrara solamente si la consulta es igual al día en que se creó --}}
                         @php
-                            $now = $carbon::now()->locale('es')->setTimezone('America/Mexico_City')->format('d m Y');
+                            $now = $carbon::now()->format('d m Y');
                             $appointment = $carbon
                                 ::parse($consulta->created_at)
-                                ->locale('es')
-                                ->setTimezone('America/Mexico_City')
                                 ->format('d m Y');
                         @endphp
                         @if ($now === $appointment)
