@@ -102,7 +102,7 @@
 
                         <div class="sm:w-1/4">
                             {{-- Presión Arterial --}}
-                            <label for="blood_press">Presion Arterial</label>
+                            <label for="blood_press">Presión Arterial</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->blood_pressure }}" disabled>
@@ -110,7 +110,7 @@
 
                         <div class="sm:w-1/4">
                             {{-- Eval Presión Arterial --}}
-                            <label for="eval_blood_press">Eval. Presion Arterial</label>
+                            <label for="eval_blood_press">Eval. Presión Arterial</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->eval_blood_press }}" disabled>
@@ -129,7 +129,7 @@
 
                         {{-- TMT --}}
                         <div class="sm:w-1/2">
-                            <label for="allergies">Calorias por día</label>
+                            <label for="allergies">Calorías por día</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->tmt }}" disabled>
@@ -137,9 +137,9 @@
                     </div>
 
                     <div class="mt-4 sm:flex sm:space-x-2 sm:space-y-0 space-y-0">
-                        {{-- Alergías --}}
+                        {{-- Alergias --}}
                         <div class="sm:w-full">
-                            <label for="allergies">Alergías</label>
+                            <label for="allergies">Alergias</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medApp->allergies }}" disabled>
@@ -149,7 +149,7 @@
                     <div class="mt-4 sm:flex sm:space-x-2 sm:space-y-0 space-y-0">
                         {{-- Diagnostico --}}
                         <div class="sm:w-full">
-                            <label for="diagnostic">Diagnostico</label>
+                            <label for="diagnostic">Diagnóstico</label>
                             <textarea
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 name="diagnostic" id="diagnostic" disabled>{{ $medApp->diagnostic }}</textarea>

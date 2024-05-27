@@ -131,7 +131,7 @@
         </div>
     </div>
 
-    {{-- IMC Calculos --}}
+    {{-- IMC Cálculos --}}
     <div class="mt-4">
         <div class="md:flex md:flex-row md:justify-between md:space-x-3">
             {{-- IMC --}}
@@ -216,10 +216,10 @@
         @enderror
     </div>
 
-    {{-- Tasa Metabolica Basal y Tasa Metabolica Total --}}
+    {{-- Tasa Metabólica Basal y Tasa Metabólica Total --}}
     <div class="mt-4">
         <div class="md:flex md:flex-row md:justify-between md:space-x-3">
-            {{-- Tasa Metabolica Basal --}}
+            {{-- Tasa Metabólica Basal --}}
             <div class="md:flex-col md:w-1/2 mb-4">
                 <x-input-label class="uppercase" for="tmb" :value="__('Metabolismo Basal')" />
                 <x-text-input id="tmb" class="block mt-1 w-full uppercase" type="text" :value="old('tmb')"
@@ -229,9 +229,9 @@
                 @enderror
             </div>
 
-            {{-- Tasa metabolica total --}}
+            {{-- Tasa metabólica total --}}
             <div class="md:flex-col md:w-1/2 mb-4">
-                <x-input-label class="uppercase" for="tmt" :value="__('Calorias necesarias por día')" />
+                <x-input-label class="uppercase" for="tmt" :value="__('Calorías necesarias por día')" />
                 <x-text-input id="tmt" class="block mt-1 w-full uppercase" type="text" :value="old('tmt')"
                     value="{{ $tmt }}" disabled placeholder="En espera de evaluación" />
                 @error('tmt')

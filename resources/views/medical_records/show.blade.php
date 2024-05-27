@@ -57,7 +57,7 @@
                                 disabled>
                         </div>
                         <div class="sm:w-1/2">
-                            <label for="gender">Genero</label>
+                            <label for="gender">Género</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text"
@@ -130,7 +130,7 @@
                                 type="text" value="{{ $medicalRecord->tmb }}" disabled>
                         </div>
                         <div class="sm:w-1/4">
-                            <label for="glucose_eval">Calorias por día</label>
+                            <label for="glucose_eval">Calorías por día</label>
                             <input
                                 class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm w-full"
                                 type="text" value="{{ $medicalRecord->tmt }}" disabled>

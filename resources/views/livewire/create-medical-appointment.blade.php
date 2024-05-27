@@ -282,9 +282,9 @@
         @enderror
     </div>
 
-    {{-- Diagnostico --}}
+    {{-- Diagnóstico --}}
     <div class="mt-4">
-        <x-input-label class="uppercase" for="diagnostic" :value="__('Diagnostico')" />
+        <x-input-label class="uppercase" for="diagnostic" :value="__('Diagnóstico')" />
         <textarea wire:model="diagnostic" wire:model.live="diagnostic" id="diagnostic" cols="15" rows="5"
             class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-lime-500 dark:focus:border-lime-600 focus:ring-lime-500 dark:focus:ring-lime-600 rounded-md shadow-sm"
             placeholder="Descripción del diagnostico realizado al paciente"></textarea>
