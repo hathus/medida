@@ -12,7 +12,7 @@ class MedicalRecord extends Model
 
     protected $casts = [
         'age' => 'date',
-        'created_at' => 'date',
+        'created_at' => 'datetime',
         'updated_at' => 'date',
     ];
 
